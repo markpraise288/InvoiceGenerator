@@ -1,0 +1,8 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-28 09:45:22"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-28 09:45:24"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-28 09:45:33"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-28 09:45:36"}
+{"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-04-28 09:46:08"}
+{"level":"info","message":"HTTP server closed.","service":"invoice-service","timestamp":"2026-04-28 09:46:08"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-28 09:51:27"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-28 09:51:29"}

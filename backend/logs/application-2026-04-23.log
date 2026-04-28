@@ -1,0 +1,50 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-23 11:47:13"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-23 11:47:17"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-04-23 11:49:09"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 11:49:09"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 11:49:09"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 11:49:09"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 11:49:17"}
+{"level":"info","message":"POST /api/expenses","service":"invoice-service","timestamp":"2026-04-23 11:49:33"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 11:49:33"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 11:55:47"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-04-23 11:59:41"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 11:59:41"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 11:59:41"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 11:59:41"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 11:59:55"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 11:59:55"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 11:59:55"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 11:59:55"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:05:36"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:05:36"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 12:07:33"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:07:33"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:07:34"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:07:34"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 12:07:34"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:12:50"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:12:50"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:12:50"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 12:12:50"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:22:48"}
+{"level":"error","message":"[GET] /api/sales - Invalid token","service":"invoice-service","timestamp":"2026-04-23 12:22:48"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-04-23 12:22:48"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:22:48"}
+{"level":"info","message":"DELETE /api/sales/69e8829457acf69214dfbf1f","service":"invoice-service","timestamp":"2026-04-23 12:22:53"}
+{"level":"error","message":"[DELETE] /api/sales/69e8829457acf69214dfbf1f - Cannot delete sales generated from invoices","service":"invoice-service","timestamp":"2026-04-23 12:22:53"}
+{"level":"info","message":"DELETE /api/sales/69e88f581a2c796c0f6ba5d9","service":"invoice-service","timestamp":"2026-04-23 12:23:01"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:23:01"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 12:23:04"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-23 12:23:53"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-23 12:23:53"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-23 12:23:53"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-23 12:23:53"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-23 12:23:53"}

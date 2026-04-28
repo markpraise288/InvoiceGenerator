@@ -1,0 +1,12 @@
+module.exports = {
+    PORT: process.env.PORT || 3000,
+    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/invoice_generator',
+    JWT_SECRET: process.env.JWT_SECRET,
+    JWT_ACCESS_TOKEN_EXPIRES_IN: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN || '15m',
+    JWT_REFRESH_TOKEN_EXPIRES_IN: process.env.JWT_REFRESH_TOKEN_EXPIRES_IN || '7d',
+    EMAIL_HOST: process.env.EMAIL_HOST,
+    EMAIL_PORT: process.env.EMAIL_PORT,
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_PASS: process.env.EMAIL_PASS,
+    EMAIL_FROM: process.env.EMAIL_FROM
+}

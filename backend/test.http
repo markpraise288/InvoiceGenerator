@@ -1,0 +1,133 @@
+GET http://localhost:3000/
+
+###
+
+#  signup
+
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+    "email": "malungapraise08@gmail.com",
+    "password": "654321"
+}
+
+###
+
+#  login
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "malungapraise08@gmail.com",
+    "password": "654321"
+}
+
+###
+
+# logout
+POST http://localhost:3000/api/auth/logout
+
+###
+
+# refresh token
+GET http://localhost:3000/api/auth/accessToken
+
+###
+
+# create client
+
+POST http://localhost:3000/api/clients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjFkNjJmZmE0Mzg4YjVjZWM1ZTA0ZiIsImlhdCI6MTc3MzMyNzU4MiwiZXhwIjoxNzczMzI4NDgyfQ.ye22UBAVdTaaA_cYp71gw5soOptAg0GkyRfcDNTZwoo
+
+{
+    "name": "Mark Praise",
+    "email": "markpraise288@gmail.com",
+    "phone": "0896831165",
+    "address": "123 Main St, Blantyre, Malawi"
+}
+
+###
+
+# get clients
+
+GET http://localhost:3000/api/clients
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWVmNTRkNDZjOTUzMGI0OTUyZGUxMiIsImlhdCI6MTc3MzA5MzExMiwiZXhwIjoxNzczMDk0MDEyfQ.LY_ZF4uRo9e7VX4vUeQkA914mJu1eHUD_oDo-7yqjyA
+###
+
+# get client by id
+
+GET http://localhost:3000/api/clients/64aef5c9d1e4b2f8c8bc9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWVmNTRkNDZjOTUzMGI0OTUyZGUxMiIsImlhdCI6MTc3MzA4ODU1MiwiZXhwIjoxNzczMDg5NDUyfQ.W6Of_hNWxgbAjGaS7tq9V070zXmjpXY1YaMcTcZHJYA
+
+###
+
+# update client
+PUT http://localhost:3000/api/clients/69af2fa0522dd276c4eca68y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjFkNjJmZmE0Mzg4YjVjZWM1ZTA0ZiIsImlhdCI6MTc3MzMyNzU4MiwiZXhwIjoxNzczMzI4NDgyfQ.ye22UBAVdTaaA_cYp71gw5soOptAg0GkyRfcDNTZwoo
+
+{
+    "name": "John Mark Doe",
+    "email": "johndoe@example.com",
+    "phone": "1234567890",
+    "address": "123 Main St, Anytown, USA"
+}
+
+
+###
+
+# delete client
+DELETE http://localhost:3000/api/clients/69af2fa0522dd276c4eca681
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWVmNTRkNDZjOTUzMGI0OTUyZGUxMiIsImlhdCI6MTc3MzA5MTA1OCwiZXhwIjoxNzczMDkxOTU4fQ.wOKzyjKdWv9GMVEzwdDj2C4-s_8EVkVdR1bI2oBTH8c
+
+
+
+
+###
+
+# create invoice
+POST http://localhost:3000/api/invoices
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjgyOTQzNjhiZTJhMmU1ZWVmYmY1ZSIsImlhdCI6MTc3MzY3Njg2NywiZXhwIjoxNzczNjc3NzY3fQ.-dqkl74niH1UP6gV27lKrL416GTh651B00hp7R6Lnu0
+Content-Type: application/json
+
+{
+    "items": [
+        {
+            "description": "Web design services",
+            "quantity": 10,
+            "price": 50
+        },
+        {
+            "description": "Hosting services",
+            "quantity": 12,
+            "price": 20
+        }
+    ],
+    "clientSnapshot": {
+        "name": "John Mark Doe",
+        "email": "johndoe@example.com",
+        "phone": "1234567890",
+        "address": "123 Main St, Anytown, USA"
+    },
+    "dueDate": "2024-08-01",
+    "tax": 0.15,
+    "discount": 0.1,
+    "status": "draft",
+    "clientId": "69b2d5a4b4b19eb37ce922e3"
+}
+
+###
+
+# get invoices
+GET http://localhost:3000/api/invoices
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWVmNTRkNDZjOTUzMGI0OTUyZGUxMiIsImlhdCI6MTc3MzE0Mjg5NSwiZXhwIjoxNzczMTQzNzk1fQ.O1AMOjU57VfQCuPnnsQr_LUzwNOEaM4wC4s5ANUk6n0
+
+
+###
+
+# get invoice pdf
+
+GET http://localhost:3000/api/invoices/69b2d5d7b4b19eb37ce922e6/pdf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YjFkNjJmZmE0Mzg4YjVjZWM1ZTA0ZiIsImlhdCI6MTc3MzMyOTI3MCwiZXhwIjoxNzczMzMwMTcwfQ.0saJW6_I9lfR4DKn52Wl8L0anWBkMWRcJqVik2ZRor4

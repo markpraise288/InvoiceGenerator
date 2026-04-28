@@ -1,0 +1,31 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-27 08:44:33"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-27 08:44:36"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-04-27 08:47:49"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-27 08:47:50"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-27 08:47:50"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-27 08:47:50"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-27 08:48:06"}
+{"level":"info","message":"GET /api/clients/69e781ce5329b71bb041e23b","service":"invoice-service","timestamp":"2026-04-27 08:48:18"}
+{"level":"info","message":"GET /api/clients/69e781ce5329b71bb041e23b","service":"invoice-service","timestamp":"2026-04-27 08:48:18"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-27 08:48:18"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-27 08:48:18"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-27 08:48:49"}
+{"level":"info","message":"GET /api/clients","service":"invoice-service","timestamp":"2026-04-27 08:48:49"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-04-27 08:48:49"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-04-27 08:48:49"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-27 08:48:59"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-27 08:48:59"}
+{"level":"info","message":"GET /api/finance/stats","service":"invoice-service","timestamp":"2026-04-27 08:49:02"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-27 08:49:02"}
+{"level":"info","message":"GET /api/finance/monthly","service":"invoice-service","timestamp":"2026-04-27 08:49:02"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-27 08:49:02"}
+{"level":"info","message":"GET /api/finance/stats","service":"invoice-service","timestamp":"2026-04-27 08:50:05"}
+{"level":"info","message":"GET /api/finance/monthly","service":"invoice-service","timestamp":"2026-04-27 08:50:05"}
+{"level":"info","message":"GET /api/expenses","service":"invoice-service","timestamp":"2026-04-27 08:50:05"}
+{"level":"info","message":"GET /api/sales","service":"invoice-service","timestamp":"2026-04-27 08:50:05"}
+{"level":"info","message":"GET /api/users/settings","service":"invoice-service","timestamp":"2026-04-27 08:50:11"}
+{"level":"error","message":"[GET] /api/users/settings - Not Found","service":"invoice-service","timestamp":"2026-04-27 08:50:11"}
+{"level":"info","message":"GET /api/users/settings","service":"invoice-service","timestamp":"2026-04-27 08:50:11"}
+{"level":"error","message":"[GET] /api/users/settings - Not Found","service":"invoice-service","timestamp":"2026-04-27 08:50:11"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-27 08:50:16"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-27 08:50:16"}

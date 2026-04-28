@@ -1,0 +1,50 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:24:46"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:24:46"}
+{"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-04-16 12:25:15"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:25:21"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:25:23"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:27:20"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:27:23"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:28:05"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:28:10"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:28:33"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:28:36"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:29:01"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:29:05"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-04-16 12:31:14"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-16 12:31:15"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 12:31:15"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-16 12:31:15"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:34:50"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:34:58"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:35:42"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:35:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:45:01"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:45:06"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:50:41"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:50:43"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:51:26"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:51:28"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:53:33"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:53:35"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:56:50"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:56:52"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-04-16 12:57:36"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-04-16 12:57:39"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"error","message":"[GET] /api/invoices - Invalid token","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"error","message":"[GET] /api/notifications - Invalid token","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-16 12:58:42"}
+{"level":"info","message":"POST /api/api/invoices/69d0e214d175d85bb251757e/remind","service":"invoice-service","timestamp":"2026-04-16 12:58:45"}
+{"level":"error","message":"[POST] /api/api/invoices/69d0e214d175d85bb251757e/remind - Not Found","service":"invoice-service","timestamp":"2026-04-16 12:58:45"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-16 12:59:45"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 12:59:45"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-04-16 12:59:47"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 12:59:47"}
+{"level":"info","message":"POST /api/api/clients/69d0d605850d75fd73240f92/remind","service":"invoice-service","timestamp":"2026-04-16 12:59:52"}
+{"level":"error","message":"[POST] /api/api/clients/69d0d605850d75fd73240f92/remind - Not Found","service":"invoice-service","timestamp":"2026-04-16 12:59:52"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-04-16 13:01:29"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-04-16 13:01:29"}
