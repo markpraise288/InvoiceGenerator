@@ -9,7 +9,7 @@ const minimalTemplate = require("../templates/minimalInvoice");
 const modernTemplate = require("../templates/modernInvoice");
 const classicTemplate = require("../templates/classicInvoice");
 const compactTemplate = require("../templates/compactInvoice");
-const boldTemplate = require("../templates/BoldInvoice");
+const boldTemplate = require("../templates/boldInvoice");
 const boldProTemplate = require("../templates/boldProInvoice");
 
 const templates = {
