@@ -1,6 +1,8 @@
 const nodemailer = require("nodemailer");
 const dns = require("dns");
 
+dns.setDefaultResultOrder("ipv4first");
+
 const {
   EMAIL_HOST,
   EMAIL_PORT,
@@ -8,29 +10,28 @@ const {
   EMAIL_PASS,
 } = require("../../config/env");
 
-// 🔥 Force IPv4 to fix ENETUNREACH (VERY IMPORTANT)
-dns.setDefaultResultOrder("ipv4first");
-
 let transporter;
 
 const initEmailTransporter = async () => {
   try {
     transporter = nodemailer.createTransport({
       host: EMAIL_HOST || "smtp.gmail.com",
-      port: Number(EMAIL_PORT) || 587,
-      secure: Number(EMAIL_PORT) === 465, // true only for 465
+      port: 587,
+      secure: false,
 
-      // 🔥 Fix for Gmail / network edge cases
       family: 4,
 
       auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
       },
+
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
     await transporter.verify();
-
     console.log("✅ Email server ready");
   } catch (error) {
     console.error("❌ Failed to initialize email transporter:");
