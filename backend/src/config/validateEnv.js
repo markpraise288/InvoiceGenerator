@@ -14,7 +14,7 @@ if (error) {
 }
 
 module.exports = {
-  PORT: envVars.PORT,
+  PORT: envVars.PORT || 10000,
   MONGODB_URL: envVars.MONGODB_URL,
   JWT_SECRET: envVars.JWT_SECRET,
   CORS_ORIGIN: envVars.CORS_ORIGIN,
