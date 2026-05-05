@@ -67,3 +67,20 @@
 {"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:11:29"}
 {"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 15:11:29"}
 {"level":"info","message":"POST /api/clients/69d0e9ffee2d900c9dbf652f/remind","service":"invoice-service","timestamp":"2026-05-05 15:11:33"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 15:16:20"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 15:16:20"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:16:41"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:16:41"}
+{"level":"info","message":"POST /api/clients/69e7830e5329b71bb041e246/remind","service":"invoice-service","timestamp":"2026-05-05 15:16:44"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:18:39"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:18:39"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:21:39"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:21:39"}
+{"level":"info","message":"POST /api/clients/69e7830e5329b71bb041e246/remind","service":"invoice-service","timestamp":"2026-05-05 15:21:46"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"error","message":"[GET] /api/notifications - Invalid token","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"error","message":"[GET] /api/invoices - Invalid token","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}

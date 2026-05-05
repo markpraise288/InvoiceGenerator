@@ -23,7 +23,7 @@ const clientSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    isDeletedAt: {
+    isDeleted: {
         type: Boolean,
         default: false
     },
