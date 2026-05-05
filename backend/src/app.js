@@ -11,7 +11,6 @@ const clientRoutes = require('./modules/client/client.routes');
 const userRoutes = require('./modules/users/user.routes');
 const invoiceRoutes = require('./modules/invoices/invoice.routes');
 const notificationsRoutes = require('./modules/notifications/notification.routes.js');
-const billingRoutes = require('./modules/billing/billing.routes.js');
 const searchRoutes = require('./modules/search/search.routes.js');
 const expenseRoutes = require('./modules/expense/expense.routes.js');
 const salesRoutes = require('./modules/sales/sales.routes.js');
@@ -25,8 +24,6 @@ app.use(cors({
   credentials: true
 }));
 
-// Stripe webhook needs raw body, so we must register it BEFORE app.use(express.json())
-app.post('/api/billing/webhook', express.raw({ type: 'application/json' }), require('./modules/billing/billing.controller').verifySubscriptionController);
 
 app.use(express.json());
 app.use(cookieParser());
@@ -48,7 +45,6 @@ app.use('/api/clients', clientRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/invoices', invoiceRoutes);
 app.use('/api/notifications', notificationsRoutes);
-app.use('/api/billing', billingRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/sales', salesRoutes);

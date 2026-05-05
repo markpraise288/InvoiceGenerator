@@ -5,7 +5,9 @@ const {
   generateRefreshToken,
 } = require("../../utils/tokens");
 const crypto = require("crypto");
-const { emailQueue } = require("../../infrastructure/queues/email.queue");
+const wecomeTemplate = require("../../infrastructure/templates/welcome.template");
+const resetPasswordTemplate = require("../../infrastructure/templates/resetPassword.template");
+const sendEmail = require("../../infrastructure/email/email.service").sendEmail;
 
 const signup = async ({ email, password, phone, name, companyName, address }) => {
   const userExistence = await User.findOne({ email });
@@ -33,19 +35,13 @@ const signup = async ({ email, password, phone, name, companyName, address }) =>
   user.refreshToken = refreshToken;
   await user.save();
 
-  await emailQueue.add(
-    "Welcome Email",
-    {
-      email: user.email,
-    },
-    {
-      attempts: 3,
-      backoff: {
-        type: "exponential",
-        delay: 5000,
-      },
-    },
-  );
+  await sendEmail({
+    to: user.email,
+    subject: "Welcome",
+    html: wecomeTemplate({
+      name: user.name,
+    }),
+  });
 
   return { accessToken, refreshToken };
 };
@@ -120,20 +116,13 @@ const forgotPassword = async ({ email }) => {
   await user.save();
 
   // Here you would typically send an email with the reset link
-  await emailQueue.add(
-    "Password Reset Email",
-    {
-      email: user.email,
+  await sendEmail({
+    to: user.email,
+    subject: "Password Reset",
+    html: resetPasswordTemplate({
       resetLink: `http://localhost:3000/reset-password?token=${forgotPasswordToken}`,
-    },
-    {
-      attempts: 3,
-      backoff: {
-        type: "exponential",
-        delay: 5000,
-      },
-    },
-  );
+    }),
+  });
 
   return "Password reset email sent";
 };

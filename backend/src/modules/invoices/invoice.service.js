@@ -2,10 +2,11 @@ const Invoice = require("./invoice.model");
 const User = require("../users/user.model");
 const generateInvoiceNumber = require("../../utils/generateInvoiceNumber");
 const generateInvoicePDF = require("../../utils/generateInvoicePdf");
-const { emailQueue } = require("../../infrastructure/queues/email.queue");
 const {
   notificationService,
 } = require("../notifications/notification.service");
+const invoiceTemplate = require("../../infrastructure/templates/invoice.template");
+const { sendEmail } = require("../../infrastructure/email/email.service");
 
 const createInvoice = async (userId, invoiceData, send) => {
   invoiceData.subtotal = invoiceData.items.reduce(
@@ -137,24 +138,24 @@ const createInvoicePDF = async (invoice, send) => {
   };
 
   if (send === "true") {
-    await emailQueue.add(
-      "Invoice Email",
+    await sendEmail(
       {
-        email: invoice.clientSnapshot.email,
-        clientName: invoice.clientSnapshot.name,
-        invoiceNumber: invoice.invoiceNumber,
-        amount: formatMoney(invoice.total),
-        dueDate: dueDate,
-        companyName: user.companyName,
-        filename: `INV-${invoice.invoiceNumber}.pdf`,
-        path: filePath,
-      },
-      {
-        attempts: 3,
-        backoff: {
-          type: "exponential",
-          delay: 5000,
-        },
+        to: invoice.clientSnapshot.email,
+        subject: "Your Invoice",
+        html: invoiceTemplate({
+          email: invoice.clientSnapshot.email,
+          clientName: invoice.clientSnapshot.name,
+          invoiceNumber: invoice.invoiceNumber,
+          amount: formatMoney(invoice.total),
+          dueDate: dueDate,
+          companyName: user.companyName,
+        }),
+        attachments: [
+          {
+            filename: `INV-${invoice.invoiceNumber}.pdf`,
+            path: filePath,
+          }
+        ],
       },
     );
   }

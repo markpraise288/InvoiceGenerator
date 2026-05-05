@@ -1,0 +1,7 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 10:51:54"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 10:51:56"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-05-05 10:52:28"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 10:52:28"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 10:52:28"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 10:52:28"}
+{"level":"info","message":"POST /api/clients/69d0e214d175d85bb251757e/remind","service":"invoice-service","timestamp":"2026-05-05 10:52:41"}
