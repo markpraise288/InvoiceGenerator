@@ -95,3 +95,18 @@
 {"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-05-05 16:09:46"}
 {"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 16:09:47"}
 {"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 16:09:47"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 16:14:18"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 16:14:18"}
+{"level":"warn","message":"MongoDB disconnected","service":"invoice-service","timestamp":"2026-05-05 16:38:54"}
+{"level":"warn","message":"MongoDB disconnected","service":"invoice-service","timestamp":"2026-05-05 20:17:02"}
+{"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-05-05 20:27:28"}
+{"level":"info","message":"HTTP server closed.","service":"invoice-service","timestamp":"2026-05-05 20:27:28"}
+{"level":"warn","message":"MongoDB disconnected","service":"invoice-service","timestamp":"2026-05-05 20:27:28"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 20:27:36"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 20:27:36"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-05-05 20:28:08"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 20:28:09"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 20:28:09"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 20:28:09"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 20:29:01"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 20:29:01"}

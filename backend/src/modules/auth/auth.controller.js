@@ -16,8 +16,8 @@ const signupHandler = asyncHandler(async (req, res) => {
 
   res.cookie("refreshToken", response.refreshToken, {
     httpOnly: true,
-    secure: false, // true in production (HTTPS)
-    sameSite: "lax",
+    secure: true, // true in production (HTTPS)
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
@@ -31,15 +31,15 @@ const loginHandler = asyncHandler(async (req, res) => {
 
   res.cookie("refreshToken", response.refreshToken, {
     httpOnly: true,
-    secure: false, // true in production (HTTPS)
-    sameSite: "lax",
+    secure: true, // true in production (HTTPS)
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
   res.cookie("accessToken", response.accessToken, {
     httpOnly: true,
-    secure: false, // true in production (HTTPS)
-    sameSite: "lax",
+    secure: true, // true in production (HTTPS)
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
   res
@@ -74,8 +74,8 @@ const refreshAccessTokenHandler = asyncHandler(async (req, res) => {
 
   res.cookie("accessToken", response.accessToken, {
     httpOnly: true,
-    secure: false, // true in production (HTTPS)
-    sameSite: "lax",
+    secure: true, // true in production (HTTPS)
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 
