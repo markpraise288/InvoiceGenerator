@@ -84,3 +84,5 @@
 {"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
 {"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
 {"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:32:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 15:33:41"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 15:33:41"}
