@@ -1,4 +1,4 @@
-const reminderTemplate = (clientName, invoiceNumber, dueDate) => {
+const reminderTemplate = ({clientName, invoiceNumber, dueDate}) => {
     const formattedDueDate = new Date(dueDate).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",

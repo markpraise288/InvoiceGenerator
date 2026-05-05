@@ -4,16 +4,12 @@ const mongoose = require("mongoose");
 const app = require("./app");
 const { PORT } = require("./config/validateEnv");
 const connectDB = require("./infrastructure/database/db");
-const { initEmailTransporter } = require("./infrastructure/email/transporter");
 const logger = require("./utils/logger");
 
 async function startServer() {
   try {
     // Connect database
     await connectDB();
-
-    // Initialize email service
-    await initEmailTransporter();
 
     // Start API server
     const server = app.listen(PORT, () => {

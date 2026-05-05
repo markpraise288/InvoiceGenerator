@@ -1,20 +1,24 @@
-const { getTransporter } = require('./transporter');
 const { EMAIL_FROM } = require('../../config/env');
+const sgMail = require("@sendgrid/mail");
 
-const sendEmail = async ({ to, subject, html, attachments = []}) => {
-  const transporter = await getTransporter();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  if(!transporter) {
-    throw new Error("Email transporter not initialized");
+const sendEmail = async ({ to, subject, html }) => {
+  try {
+    const msg = {
+      to,
+      from: process.env.EMAIL_FROM, // must be verified in SendGrid
+      subject,
+      html,
+    };
+
+    await sgMail.send(msg);
+
+    console.log("✅ Email sent");
+  } catch (error) {
+    console.error("❌ SendGrid error:", error.response?.body || error.message);
+    throw error;
   }
-
-  await transporter.sendMail({
-    from: EMAIL_FROM,
-    to,
-    subject,
-    html,
-    attachments
-  });
 };
 
 module.exports = {

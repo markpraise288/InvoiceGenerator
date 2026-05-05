@@ -26,3 +26,44 @@
 {"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 13:48:06"}
 {"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 13:55:47"}
 {"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 13:55:49"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 13:58:05"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 13:58:08"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 14:46:08"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 14:47:42"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 14:48:29"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 14:49:18"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 14:49:18"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-05-05 14:50:39"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 14:50:40"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 14:50:40"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 14:50:40"}
+{"level":"info","message":"POST /api/clients/69d0e5fe468c518b3b89f39a/remind","service":"invoice-service","timestamp":"2026-05-05 14:50:45"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 14:52:55"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 14:52:55"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 14:54:55"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 14:54:55"}
+{"level":"info","message":"POST /api/clients/69d0e214d175d85bb251757e/remind","service":"invoice-service","timestamp":"2026-05-05 14:54:58"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 14:57:32"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 14:57:32"}
+{"level":"info","message":"POST /api/clients/69e7830e5329b71bb041e246/remind","service":"invoice-service","timestamp":"2026-05-05 14:57:38"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 14:57:51"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 15:08:32"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 15:08:32"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"error","message":"[GET] /api/notifications - Invalid token","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"error","message":"[GET] /api/invoices - Invalid token","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:08:46"}
+{"level":"info","message":"POST /api/clients/69d0e9ffee2d900c9dbf652f/remind","service":"invoice-service","timestamp":"2026-05-05 15:08:50"}
+{"level":"error","message":"[POST] /api/clients/69d0e9ffee2d900c9dbf652f/remind - fileContent is not defined","service":"invoice-service","timestamp":"2026-05-05 15:08:50"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 15:09:30"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 15:09:30"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-05 15:11:14"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-05 15:11:14"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-05 15:11:26"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:11:26"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-05 15:11:29"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-05 15:11:29"}
+{"level":"info","message":"POST /api/clients/69d0e9ffee2d900c9dbf652f/remind","service":"invoice-service","timestamp":"2026-05-05 15:11:33"}

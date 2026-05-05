@@ -7,6 +7,7 @@ const generateInvoicePDF = require("../../utils/generateInvoicePdf");
 const User = require("../users/user.model");
 const remindTemplate = require("../../infrastructure/templates/reminder.template");
 const { sendEmail } = require("../../infrastructure/email/email.service");
+const fs = require("fs");
 
 const createClient = async (userId, clientData) => {
   const client = await Client.create({ ...clientData, userId: userId });
@@ -79,20 +80,28 @@ const remindClient = async (invoiceId, userId) => {
   }
 
   const filePath = await generateInvoicePDF(invoice, user, invoice.template);
+  const fileContent = fs.readFileSync(filePath).toString("base64");
   await sendEmail({
     to: invoice.clientSnapshot.email,
-    subject: "Reminder",
+    subject: `Invoice Reminder – Invoice #${invoice.invoiceNumber}`,
+
+    text: `Hello ${invoice.clientSnapshot.name},
+Your invoice #${invoice.invoiceNumber} amounting to $${invoice.total} is due on ${invoice.dueDate}.`,
+
     html: remindTemplate({
       clientName: invoice.clientSnapshot.name,
       invoiceNumber: invoice.invoiceNumber,
-        amount: invoice.total,
-        dueDate: invoice.dueDate,
-        companyName: user.companyName,
+      amount: invoice.total,
+      dueDate: invoice.dueDate,
+      companyName: user.companyName,
     }),
+
     attachments: [
       {
+        content: fileContent,
         filename: `INV-${invoice.invoiceNumber}.pdf`,
-        path: filePath,
+        type: "application/pdf",
+        disposition: "attachment",
       },
     ],
   });
