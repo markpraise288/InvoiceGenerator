@@ -5,7 +5,8 @@ const registerSchema = joi.object({
     email: joi.string().email().required(),
     address: joi.string(),
     phone: joi.string(),
-    companyName: joi.string()
+    companyName: joi.string(),
+    password: joi.string().min(6).required(),
 });
 
 const loginSchema = joi.object({
