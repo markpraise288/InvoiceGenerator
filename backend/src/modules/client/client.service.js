@@ -28,13 +28,13 @@ const getClients = async (userId) => {
 };
 
 const getClientById = async (clientId, userId) => {
-  const client = Client.findOne({ _id: clientId, userId, isDeletedAt: false });
+  const client = Client.findOne({ _id: clientId, userId, isDeleted: false });
   return client;
 };
 
 const updateClient = async (clientId, userId, updateData) => {
   const client = Client.findOneAndUpdate(
-    { _id: clientId, userId, isDeletedAt: false },
+    { _id: clientId, userId, isDeleted: false },
     updateData,
     { returnDocument: "after" },
   );
@@ -43,8 +43,8 @@ const updateClient = async (clientId, userId, updateData) => {
 
 const deleteClient = async (clientId, userId) => {
   const client = Client.findOneAndUpdate(
-    { _id: clientId, userId, isDeletedAt: false },
-    { isDeletedAt: true },
+    { _id: clientId, userId, isDeleted: false },
+    { isDeleted: true },
     { returnDocument: "after" },
   );
   return client;
@@ -57,8 +57,8 @@ const deleteClientPermanently = async (clientId, userId) => {
 
 const restoreClient = async (clientId, userId) => {
   const client = Client.findOneAndUpdate(
-    { _id: clientId, userId, isDeletedAt: true },
-    { isDeletedAt: false },
+    { _id: clientId, userId, isDeleted: true },
+    { isDeleted: false },
     { returnDocument: "after" },
   );
   return client;
