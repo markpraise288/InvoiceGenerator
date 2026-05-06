@@ -1,9 +1,9 @@
-const welcomeTemplate = ({ email }) => {
+const welcomeTemplate = ({ name }) => {
 
   return `
   <div style="font-family:Arial; line-height:1.6">
 
-    <h2>Welcome ${email} 👋</h2>
+    <h2>Welcome ${name} 👋</h2>
 
     <p>Thank you for joining <b>Invoice Generator</b>.</p>
 

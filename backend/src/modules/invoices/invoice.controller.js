@@ -2,9 +2,21 @@ const { createInvoice, downloadInvoicePDF, getInvoiceById, updateInvoice, delete
 const ApiResponse = require('../../utils/apiResponse');
 const asyncHandler = require('../../utils/asyncHandler');
 
-const createInvoiceHandler = asyncHandler( async(req, res) => {
-    const invoice = await createInvoice(req.user.id, req.body, req.query.send);
-    res.status(201).json( new ApiResponse(201, 'Invoice created successfully', invoice) );
+const createInvoiceHandler = asyncHandler(async (req, res) => {
+  const { invoice, pdfBuffer } = await createInvoice(
+    req.user.id,
+    req.body,
+    req.query.send
+  );
+
+  // 🔥 Send PDF as download
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename=INV-${invoice.invoiceNumber}.pdf`
+  );
+
+  return res.status(201).send(pdfBuffer);
 });
 
 const downloadInvoicePDFHandler = asyncHandler( async(req, res) => {

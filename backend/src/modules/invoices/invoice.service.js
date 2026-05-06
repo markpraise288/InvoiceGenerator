@@ -9,19 +9,25 @@ const invoiceTemplate = require("../../infrastructure/templates/invoice.template
 const { sendEmail } = require("../../infrastructure/email/email.service");
 
 const createInvoice = async (userId, invoiceData, send) => {
+  // 🔹 Calculate subtotal
   invoiceData.subtotal = invoiceData.items.reduce(
     (acc, item) => acc + item.quantity * item.price,
-    0,
+    0
   );
+
+  // 🔹 Calculate total
   invoiceData.total =
     invoiceData.subtotal +
-    ((invoiceData.tax.value / 100) * invoiceData.subtotal || 0) -
-    ((invoiceData.discount.value / 100) * invoiceData.subtotal || 0);
+    ((invoiceData.tax?.value || 0) / 100) * invoiceData.subtotal -
+    ((invoiceData.discount?.value || 0) / 100) * invoiceData.subtotal;
 
+  // 🔹 Generate invoice number
   invoiceData.invoiceNumber = await generateInvoiceNumber(userId);
+
+  // 🔹 Save invoice
   const invoice = await Invoice.create({ ...invoiceData, userId });
 
-  // Trigger notification for invoice creation
+  // 🔹 Notification
   await notificationService.createNotification({
     userId: userId,
     title: "New Invoice Created",
@@ -29,9 +35,14 @@ const createInvoice = async (userId, invoiceData, send) => {
     type: "invoice",
   });
 
-  await createInvoicePDF(invoice, send);
+  // 🔥 Generate PDF (now returns buffer)
+  const pdfBuffer = await createInvoicePDF(invoice, send);
 
-  return invoice;
+  // 🔥 RETURN BOTH
+  return {
+    invoice,
+    pdfBuffer,
+  };
 };
 
 const downloadInvoicePDF = async (invoiceId) => {
@@ -127,7 +138,13 @@ const createInvoicePDF = async (invoice, send) => {
     throw new Error("User not found");
   }
 
-  const filePath = await generateInvoicePDF(invoice, user, invoice.template);
+  // 🔥 Generate PDF as BUFFER (not file path)
+  const pdfBuffer = await generateInvoicePDF(
+    invoice,
+    user,
+    invoice.template
+  );
+
   const dueDate = invoice.dueDate;
 
   const formatMoney = (number) => {
@@ -137,28 +154,30 @@ const createInvoicePDF = async (invoice, send) => {
     }).format(number);
   };
 
+  // ✅ Send email with BUFFER attachment
   if (send === "true") {
-    await sendEmail(
-      {
-        to: invoice.clientSnapshot.email,
-        subject: "Your Invoice",
-        html: invoiceTemplate({
-          email: invoice.clientSnapshot.email,
-          clientName: invoice.clientSnapshot.name,
-          invoiceNumber: invoice.invoiceNumber,
-          amount: formatMoney(invoice.total),
-          dueDate: dueDate,
-          companyName: user.companyName,
-        }),
-        attachments: [
-          {
-            filename: `INV-${invoice.invoiceNumber}.pdf`,
-            path: filePath,
-          }
-        ],
-      },
-    );
+    await sendEmail({
+      to: invoice.clientSnapshot.email,
+      subject: "Your Invoice",
+      html: invoiceTemplate({
+        email: invoice.clientSnapshot.email,
+        clientName: invoice.clientSnapshot.name,
+        invoiceNumber: invoice.invoiceNumber,
+        amount: formatMoney(invoice.total),
+        dueDate: dueDate,
+        companyName: user.companyName,
+      }),
+      attachments: [
+        {
+          filename: `INV-${invoice.invoiceNumber}.pdf`,
+          content: pdfBuffer, // 🔥 FIXED (was path)
+        },
+      ],
+    });
   }
+
+  // 🔥 RETURN BUFFER so caller can send it to frontend
+  return pdfBuffer;
 };
 
 module.exports = {
