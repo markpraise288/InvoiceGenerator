@@ -12,7 +12,7 @@ const createInvoice = async (userId, invoiceData, send) => {
   // 🔹 Calculate subtotal
   invoiceData.subtotal = invoiceData.items.reduce(
     (acc, item) => acc + item.quantity * item.price,
-    0
+    0,
   );
 
   // 🔹 Calculate total
@@ -72,15 +72,15 @@ const { createSaleFromInvoice } = require("../sales/sales.service");
 
 const updateInvoice = async (id, updateData) => {
   const invoice = await Invoice.findOne({ _id: id });
-  
+
   const previousStatus = invoice.status;
-  
+
   const totalPaid = updateData.payments
     ? updateData.payments.reduce((acc, payment) => acc + payment.amount, 0)
     : invoice.payments.reduce((acc, payment) => acc + payment.amount, 0);
 
   invoice.totalPaid = totalPaid;
-  
+
   if (totalPaid >= invoice.total) {
     invoice.status = "paid";
   } else if (totalPaid > 0) {
@@ -91,13 +91,13 @@ const updateInvoice = async (id, updateData) => {
 
   if (updateData.status) invoice.status = updateData.status;
   if (updateData.payments) invoice.payments = updateData.payments;
-  
+
   await invoice.save();
-  
+
   // If invoice status changed to "paid", create a Sale record
   if (previousStatus !== "paid" && invoice.status === "paid") {
     await createSaleFromInvoice(invoice);
-    
+
     // Trigger notification for payment
     await notificationService.createNotification({
       userId: invoice.userId,
@@ -106,7 +106,7 @@ const updateInvoice = async (id, updateData) => {
       type: "invoice",
     });
   }
-  
+
   return invoice;
 };
 
@@ -139,11 +139,7 @@ const createInvoicePDF = async (invoice, send) => {
   }
 
   // 🔥 Generate PDF as BUFFER (not file path)
-  const pdfBuffer = await generateInvoicePDF(
-    invoice,
-    user,
-    invoice.template
-  );
+  const pdfBuffer = await generateInvoicePDF(invoice, user, invoice.template);
 
   const dueDate = invoice.dueDate;
 
@@ -170,7 +166,9 @@ const createInvoicePDF = async (invoice, send) => {
       attachments: [
         {
           filename: `INV-${invoice.invoiceNumber}.pdf`,
-          content: pdfBuffer, // 🔥 FIXED (was path)
+          content: pdfBuffer.toString("base64"), // 🔥 FIX
+          type: "application/pdf",
+          disposition: "attachment",
         },
       ],
     });

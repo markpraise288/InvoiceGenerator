@@ -5,3 +5,5 @@
 {"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-06 10:22:43"}
 {"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-06 10:23:53"}
 {"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-06 10:23:53"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-06 10:25:52"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-06 10:25:52"}
