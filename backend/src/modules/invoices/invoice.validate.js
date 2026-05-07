@@ -99,7 +99,7 @@ const createInvoiceSchema = joi.object({
   clientSnapshot: clientSnapshotSchema.required(),
 
   // 🔥 ITEMS
-  items: joi.array().items(itemSchema).min(1).required(),
+  items: joi.array().items(itemSchema).min(1),
 
   // 🔥 SERVICE
   serviceDetails: joi.object({
@@ -140,7 +140,7 @@ const createInvoiceSchema = joi.object({
   fees: joi.array().items(feeSchema),
 
   // 🔥 PAYMENTS
-  paymentMethods: joi.array().items(paymentMethodSchema),
+  paymentMethods: joi.array().items(paymentMethodSchema).allow(null),
   payments: joi.array().items(paymentSchema),
 
   // 🔥 CALCULATED (optional)
