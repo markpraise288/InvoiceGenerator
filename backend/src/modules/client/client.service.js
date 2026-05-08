@@ -79,9 +79,7 @@ const remindClient = async (invoiceId, userId) => {
     throw new Error("User not found");
   }
 
-  const filePath = await generateInvoicePDF(invoice, user, invoice.template);
-  const pdfBuffer = fs.readFileSync(filePath);
-  const fileContent = fs.readFileSync(filePath).toString("base64");
+  const pdfBuffer = await generateInvoicePDF(invoice, user, invoice.template);
   await sendEmail({
     to: invoice.clientSnapshot.email,
     subject: `Invoice Reminder – Invoice #${invoice.invoiceNumber}`,
