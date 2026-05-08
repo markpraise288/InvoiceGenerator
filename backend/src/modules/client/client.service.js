@@ -85,8 +85,7 @@ const remindClient = async (invoiceId, userId) => {
     to: invoice.clientSnapshot.email,
     subject: `Invoice Reminder – Invoice #${invoice.invoiceNumber}`,
 
-    text: `Hello ${invoice.clientSnapshot.name},
-Your invoice #${invoice.invoiceNumber} amounting to $${invoice.total} is due on ${invoice.dueDate}.`,
+    text: `Hello ${invoice.clientSnapshot.name},`,
 
     html: remindTemplate({
       clientName: invoice.clientSnapshot.name,
@@ -98,8 +97,8 @@ Your invoice #${invoice.invoiceNumber} amounting to $${invoice.total} is due on 
 
     attachments: [
       {
-        content: fileContent,
-        filename: `INV-${invoice.invoiceNumber}.pdf`,
+        filename: "invoice.pdf",
+        content: pdfBuffer.toString("base64"),
         type: "application/pdf",
         disposition: "attachment",
       },

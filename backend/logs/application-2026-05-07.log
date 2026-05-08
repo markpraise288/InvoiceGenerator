@@ -1,0 +1,16 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-07 10:57:30"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-07 10:57:30"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-05-07 11:13:40"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-07 11:13:40"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-07 11:13:40"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-07 11:13:40"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-05-07 11:14:00"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-05-07 11:14:00"}
+{"level":"info","message":"POST /api/auth/logout","service":"invoice-service","timestamp":"2026-05-07 11:16:53"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-05-07 11:16:57"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-07 11:16:58"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-05-07 11:16:58"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-05-07 11:16:58"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-05-07 11:16:58"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-05-07 11:24:40"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-05-07 11:24:40"}
