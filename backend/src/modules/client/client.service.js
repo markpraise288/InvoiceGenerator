@@ -80,6 +80,7 @@ const remindClient = async (invoiceId, userId) => {
   }
 
   const filePath = await generateInvoicePDF(invoice, user, invoice.template);
+  const pdfBuffer = fs.readFileSync(filePath);
   const fileContent = fs.readFileSync(filePath).toString("base64");
   await sendEmail({
     to: invoice.clientSnapshot.email,
