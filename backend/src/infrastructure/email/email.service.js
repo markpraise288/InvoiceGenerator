@@ -3,13 +3,14 @@ const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmail = async ({ to, subject, html }) => {
+const sendEmail = async ({ to, subject, html, attachments }) => {
   try {
     const msg = {
       to,
       from: process.env.EMAIL_FROM, // must be verified in SendGrid
       subject,
       html,
+      attachments,
     };
 
     await sgMail.send(msg);
