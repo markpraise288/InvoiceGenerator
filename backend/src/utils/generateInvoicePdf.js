@@ -18,7 +18,7 @@ const templates = {
   classic: classicTemplate,
   compact: compactTemplate,
   bold: boldTemplate,
-  boldPro: boldProTemplate,
+  "bold-pro": boldProTemplate,
 };
 
 /**
