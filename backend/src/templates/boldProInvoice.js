@@ -40,36 +40,92 @@ const generateBoldProInvoice = (
     ).format(amount);
 
   // ================= HEADER (DARK BAR) =================
-  doc.rect(0, 0, doc.page.width, 100).fill("#1e293b");
+  // ================= HEADER (GRADIENT) =================
 
-  doc.fillColor("white");
+// Gradient simulation
+const startColor = [15, 23, 42]; // slate-900
+const endColor = [51, 65, 85];   // slate-700
+
+for (let i = 0; i < doc.page.width; i += 2) {
+  const ratio = i / doc.page.width;
+
+  const r = Math.round(
+    startColor[0] + (endColor[0] - startColor[0]) * ratio
+  );
+
+  const g = Math.round(
+    startColor[1] + (endColor[1] - startColor[1]) * ratio
+  );
+
+  const b = Math.round(
+    startColor[2] + (endColor[2] - startColor[2]) * ratio
+  );
 
   doc
-    .font("Helvetica-Bold")
-    .fontSize(22)
-    .text("INVOICE", startX, 30);
+    .rect(i, 0, 2, 100)
+    .fill(`rgb(${r},${g},${b})`);
+}
 
-  doc
-    .fontSize(10)
-    .font("Helvetica")
-    .text(`#${invoice.invoiceNumber || "00001"}`, startX, 55);
+// White text
+doc.fillColor("white");
 
-  // RIGHT SIDE (USER)
-  doc
-    .font("Helvetica-Bold")
-    .fontSize(12)
-    .text(user.companyName || user.name, 350, 30, { align: "right" });
+// LEFT SIDE
+doc
+  .font("Helvetica-Bold")
+  .fontSize(26)
+  .text("INVOICE", startX, 28);
 
-  doc
-    .font("Helvetica")
-    .fontSize(10)
-    .text(user.email, 350, 50, { align: "right" });
+doc
+  .font("Helvetica")
+  .fontSize(10)
+  .fillColor("#CBD5E1")
+  .text(
+    `#${invoice.invoiceNumber || "00001"}`,
+    startX,
+    60
+  );
 
-  doc.text(user.phone, 350, 65, { align: "right" });
+// RIGHT SIDE
+doc
+  .fillColor("white")
+  .font("Helvetica-Bold")
+  .fontSize(12)
+  .text(
+    user.companyName || user.name,
+    350,
+    30,
+    {
+      width: 180,
+      align: "right",
+    }
+  );
 
-  y = 120;
-  doc.fillColor("black");
+doc
+  .font("Helvetica")
+  .fontSize(10)
+  .fillColor("#CBD5E1")
+  .text(
+    user.email,
+    350,
+    50,
+    {
+      width: 180,
+      align: "right",
+    }
+  );
 
+doc.text(
+  user.phone || "",
+  350,
+  65,
+  {
+    width: 180,
+    align: "right",
+  }
+);
+
+y = 120;
+doc.fillColor("black");
   // ================= CLIENT + META =================
   doc
     .font("Helvetica-Bold")
@@ -180,7 +236,7 @@ const generateBoldProInvoice = (
     .font("Helvetica")
     .fontSize(10)
     .fillColor("gray")
-    .text(invoice.terms || "Thank you for your business!", leftX, y + 15, {
+    .text(invoice.notes || "Thank you for your business!", leftX, y + 15, {
       width: 250,
     });
 
@@ -282,21 +338,6 @@ const generateBoldProInvoice = (
 
   y += 20;
 
-  // ================= NOTES FOOT =================
-  if (invoice.notes) {
-    doc
-      .moveTo(startX, y)
-      .lineTo(startX + 500, y)
-      .strokeColor("#e5e7eb")
-      .stroke();
-
-    y += 10;
-
-    doc
-      .fontSize(10)
-      .fillColor("gray")
-      .text(invoice.notes, startX, y);
-  }
 };
 
 module.exports = generateBoldProInvoice;

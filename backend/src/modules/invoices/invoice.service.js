@@ -7,6 +7,8 @@ const {
 } = require("../notifications/notification.service");
 const invoiceTemplate = require("../../infrastructure/templates/invoice.template");
 const { sendEmail } = require("../../infrastructure/email/email.service");
+const formatDate = require("../../utils/formatDate");
+const formatCurrency = require("../../utils/formatCurrency");
 
 const createInvoice = async (userId, invoiceData, send) => {
   // 🔹 Calculate subtotal
@@ -144,10 +146,7 @@ const createInvoicePDF = async (invoice, send) => {
   const dueDate = invoice.dueDate;
 
   const formatMoney = (number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(number);
+    return formatCurrency(number, "USD", "en-US");
   };
 
   // ✅ Send email with BUFFER attachment
@@ -160,7 +159,7 @@ const createInvoicePDF = async (invoice, send) => {
         clientName: invoice.clientSnapshot.name,
         invoiceNumber: invoice.invoiceNumber,
         amount: formatMoney(invoice.total),
-        dueDate: dueDate,
+        dueDate: formatDate(dueDate),
         companyName: user.companyName,
       }),
       attachments: [

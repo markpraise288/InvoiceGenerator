@@ -8,6 +8,8 @@ const User = require("../users/user.model");
 const remindTemplate = require("../../infrastructure/templates/reminder.template");
 const { sendEmail } = require("../../infrastructure/email/email.service");
 const fs = require("fs");
+const formatDate = require("../../utils/formatDate");
+const formatCurrency = require("../../utils/formatCurrency");
 
 const createClient = async (userId, clientData) => {
   const client = await Client.create({ ...clientData, userId: userId });
@@ -89,8 +91,8 @@ const remindClient = async (invoiceId, userId) => {
     html: remindTemplate({
       clientName: invoice.clientSnapshot.name,
       invoiceNumber: invoice.invoiceNumber,
-      amount: invoice.total,
-      dueDate: invoice.dueDate,
+      amount: formatCurrency(invoice.total, "USD", "en-US"),
+      dueDate: formatDate(invoice.dueDate),
       companyName: user.companyName,
     }),
 

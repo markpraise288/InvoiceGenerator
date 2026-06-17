@@ -23,31 +23,77 @@ function generateCorporateWave(doc, invoice, user) {
 
   const total = subtotal - discount + tax;
 
-  // ===== HEADER (GRADIENT SIMULATION) =====
-  doc.rect(0, 0, 612, 100).fill("#1E3A8A"); // blue
-  doc.rect(0, 50, 612, 50).fill("#1F2937"); // slate overlay
+ // ===== HEADER (PROFESSIONAL GRADIENT) =====
+const headerHeight = 110;
 
-  // TITLE
-  doc
-    .fillColor("white")
-    .font("Helvetica-Bold")
-    .fontSize(28)
-    .text("INVOICE", margin, 40);
+const headerGradient = doc.linearGradient(
+  0,
+  0,
+  612,
+  0
+);
 
-  // USER INFO (TOP RIGHT)
-  doc
-    .fontSize(12)
-    .text(user.companyName || user.name, 350, 35, {
-      align: "right",
+headerGradient
+  .stop(0, "#1D4ED8") // blue-700
+  .stop(0.45, "#1E40AF") // blue-800
+  .stop(1, "#1E293B"); // slate-800
+
+doc
+  .rect(0, 0, 612, headerHeight)
+  .fill(headerGradient);
+
+// Decorative wave effect
+doc
+  .fillOpacity(0.08)
+  .fillColor("#FFFFFF")
+  .circle(540, -20, 120)
+  .fill();
+
+doc
+  .fillOpacity(0.05)
+  .fillColor("#FFFFFF")
+  .circle(450, -40, 100)
+  .fill();
+
+doc.fillOpacity(1);
+
+// ===== TITLE =====
+doc
+  .fillColor("#FFFFFF")
+  .font("Helvetica-Bold")
+  .fontSize(30)
+  .text("INVOICE", margin, 40);
+
+// ===== BUSINESS INFO =====
+doc
+  .font("Helvetica-Bold")
+  .fontSize(13)
+  .fillColor("#FFFFFF")
+  .text(
+    user.companyName || user.name,
+    350,
+    35,
+    {
       width: 200,
-    });
+      align: "right",
+    }
+  );
 
-  doc
-    .fontSize(9)
-    .fillColor("#E5E7EB")
-    .text(user.email, 350, 55, { align: "right", width: 200 });
+doc
+  .font("Helvetica")
+  .fontSize(9)
+  .fillColor("#E5E7EB")
+  .text(
+    user.email,
+    350,
+    55,
+    {
+      width: 200,
+      align: "right",
+    }
+  );
 
-  y = 130;
+y = 140;
 
   // ===== CLIENT + META =====
   // LEFT (CLIENT)
@@ -158,18 +204,30 @@ function generateCorporateWave(doc, invoice, user) {
     .text(`Tax: ${invoice.currency} ${tax.toFixed(2)}`, 350, ty + 30);
 
   // TOTAL BOX
-  doc
-    .rect(350, ty + 50, 160, 25)
-    .fill("#1F2937");
+ const totalGradient = doc.linearGradient(
+  350,
+  ty + 50,
+  510,
+  ty + 50
+);
 
-  doc
-    .fillColor("white")
-    .font("Helvetica-Bold")
-    .text(
-      `Total: ${invoice.currency} ${total.toFixed(2)}`,
-      360,
-      ty + 58
-    );
+totalGradient
+  .stop(0, "#1D4ED8")
+  .stop(1, "#1E293B");
+
+doc
+  .roundedRect(350, ty + 50, 170, 30, 6)
+  .fill(totalGradient);
+
+doc
+  .fillColor("#FFFFFF")
+  .font("Helvetica-Bold")
+  .fontSize(11)
+  .text(
+    `Total: ${invoice.currency} ${total.toFixed(2)}`,
+    365,
+    ty + 59
+  );
 
   // SIGNATURE
   doc
@@ -251,19 +309,45 @@ function generateCorporateWave(doc, invoice, user) {
   y += 40;
 
   // ===== FOOTER =====
-  doc.rect(0, y, 612, 60).fill("#1F2937");
+const footerHeight = 65;
 
-  doc
-    .fillColor("white")
-    .font("Helvetica-Bold")
-    .fontSize(10)
-    .text("Get in Touch", margin, y + 10);
+const footerGradient = doc.linearGradient(
+  0,
+  y,
+  612,
+  y
+);
 
-  doc
-    .font("Helvetica")
-    .fontSize(9)
-    .text(user.phone, margin, y + 25)
-    .text(user.address, margin, y + 40);
+footerGradient
+  .stop(0, "#1E293B")
+  .stop(0.5, "#1E40AF")
+  .stop(1, "#1D4ED8");
+
+doc
+  .rect(0, y, 612, footerHeight)
+  .fill(footerGradient);
+
+// Decorative wave
+doc
+  .fillOpacity(0.05)
+  .fillColor("#FFFFFF")
+  .circle(50, y + 60, 80)
+  .fill();
+
+doc.fillOpacity(1);
+
+// Footer Content
+doc
+  .fillColor("#FFFFFF")
+  .font("Helvetica-Bold")
+  .fontSize(11)
+  .text("Get in Touch", margin, y + 12);
+
+doc
+  .font("Helvetica")
+  .fontSize(9)
+  .text(user.phone || "-", margin, y + 30)
+  .text(user.address || "-", margin, y + 44);
 }
 
 module.exports = generateCorporateWave;
