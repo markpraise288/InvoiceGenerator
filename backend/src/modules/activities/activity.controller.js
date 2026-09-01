@@ -1,7 +1,7 @@
 // modules/activities/activity.controller.js
 
 const asyncHandler = require("../../utils/asyncHandler");
-const ApiResponse = require("../../utils/ApiResponse");
+const ApiResponse = require("../../utils/apiResponse");
 const activityService = require("./activity.service");
 
 // ─── Create activity (user-initiated) ──────────────────────────────────────────
