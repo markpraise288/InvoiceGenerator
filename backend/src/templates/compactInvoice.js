@@ -137,13 +137,13 @@ function generateCompactInvoice(doc, invoice, user) {
     .font("Helvetica-Bold")
     .fontSize(10)
     .fillColor("#111")
-    .text(invoice.clientSnapshot.name, 400, y - 35, { width: 150 });
+    .text(invoice.customerSnapshot.name, 400, y - 35, { width: 150 });
 
   doc
     .font("Helvetica")
     .fontSize(9)
     .fillColor("#666")
-    .text(invoice.clientSnapshot.address, 400, y - 20, { width: 150 });
+    .text(invoice.customerSnapshot.address, 400, y - 20, { width: 150 });
 
   y += 40;
 

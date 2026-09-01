@@ -1,63 +1,84 @@
-const joi = require("joi");
+const Joi = require("joi");
 
-// ==============================
-// 🔹 CREATE EXPENSE SCHEMA
-// ==============================
-const createExpenseSchema = joi.object({
-  title: joi.string().required().trim(),
+const objectId = Joi.string().regex(/^[0-9a-fA-F]{24}$/).message("Invalid ID format");
 
-  amount: joi.number().min(0).required(),
+const categoryEnum = [
+  "office_supplies",
+  "software",
+  "travel",
+  "meals",
+  "marketing",
+  "payroll",
+  "rent",
+  "utilities",
+  "professional_services",
+  "equipment",
+  "other",
+];
 
-  category: joi
-    .string()
-    .valid("rent", "utilities", "marketing", "salaries", "office", "software", "travel", "other")
-    .required(),
+const statusEnum = ["pending", "approved", "rejected", "paid"];
+const intervalEnum = ["weekly", "monthly", "yearly"];
 
-  date: joi.date().default(Date.now),
-
-  notes: joi.string().allow("", null),
-
-  receiptUrl: joi.string().uri().allow("", null),
+const createExpenseSchema = Joi.object({
+  description: Joi.string().trim().min(1).max(300).required(),
+  category: Joi.string().valid(...categoryEnum).optional(),
+  vendor: Joi.string().trim().allow("").optional(),
+  amount: Joi.number().integer().min(1).required(), // cents
+  currency: Joi.string().trim().length(3).uppercase().optional(),
+  expenseDate: Joi.date().optional(),
+  isRecurring: Joi.boolean().optional(),
+  recurringInterval: Joi.string()
+    .valid(...intervalEnum)
+    .when("isRecurring", { is: true, then: Joi.required(), otherwise: Joi.optional().allow(null) }),
+  receiptUrl: Joi.string().uri().allow("").optional(),
+  notes: Joi.string().trim().allow("").optional(),
 });
 
-// ==============================
-// 🔹 UPDATE EXPENSE SCHEMA
-// ==============================
-const updateExpenseSchema = joi.object({
-  title: joi.string().trim(),
+const updateExpenseSchema = Joi.object({
+  description: Joi.string().trim().min(1).max(300).optional(),
+  category: Joi.string().valid(...categoryEnum).optional(),
+  vendor: Joi.string().trim().allow("").optional(),
+  amount: Joi.number().integer().min(1).optional(),
+  currency: Joi.string().trim().length(3).uppercase().optional(),
+  expenseDate: Joi.date().optional(),
+  isRecurring: Joi.boolean().optional(),
+  recurringInterval: Joi.string().valid(...intervalEnum).optional().allow(null),
+  receiptUrl: Joi.string().uri().allow("").optional(),
+  notes: Joi.string().trim().allow("").optional(),
+  // status intentionally excluded — dedicated approve/reject/mark-paid endpoints
+}).min(1);
 
-  amount: joi.number().min(0),
-
-  category: joi.string().valid("rent", "utilities", "marketing", "salary", "other"),
-
-  date: joi.date(),
-
-  notes: joi.string().allow("", null),
-
-  receiptUrl: joi.string().uri().allow("", null),
+const approveExpenseSchema = Joi.object({
+  // no body needed — approver is derived from req.user, but kept as an object
+  // in case you want to add e.g. an optional approval note later
 });
 
-// ==============================
-// 🔹 QUERY SCHEMA (FILTERS & PAGINATION)
-// ==============================
-const querySchema = joi.object({
-  category: joi.string().valid("rent", "utilities", "marketing", "salary", "other"),
+const rejectExpenseSchema = Joi.object({
+  rejectionReason: Joi.string().trim().min(1).max(500).required(),
+});
 
-  startDate: joi.date().iso(),
+const markExpensePaidSchema = Joi.object({
+  paidAt: Joi.date().optional(),
+});
 
-  endDate: joi.date().iso(),
-
-  page: joi.number().integer().min(1).default(1),
-
-  limit: joi.number().integer().min(1).max(100).default(10),
-
-  sortBy: joi.string().valid("date", "amount", "category", "createdAt").default("date"),
-
-  sortOrder: joi.number().valid(1, -1).default(-1),
+const listExpensesQuerySchema = Joi.object({
+  search: Joi.string().trim().allow("").optional(),
+  category: Joi.string().valid(...categoryEnum).optional(),
+  status: Joi.string().valid(...statusEnum).optional(),
+  isRecurring: Joi.boolean().optional(),
+  dateFrom: Joi.date().optional(),
+  dateTo: Joi.date().optional(),
+  page: Joi.number().integer().min(1).optional(),
+  limit: Joi.number().integer().min(1).max(100).optional(),
+  sortBy: Joi.string().valid("expenseDate", "createdAt", "amount").optional(),
+  sortOrder: Joi.string().valid("asc", "desc").optional(),
 });
 
 module.exports = {
   createExpenseSchema,
   updateExpenseSchema,
-  querySchema,
+  approveExpenseSchema,
+  rejectExpenseSchema,
+  markExpensePaidSchema,
+  listExpensesQuerySchema,
 };

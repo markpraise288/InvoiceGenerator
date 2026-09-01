@@ -126,7 +126,7 @@ doc.text(
 
 y = 120;
 doc.fillColor("black");
-  // ================= CLIENT + META =================
+  // ================= CUSTOMER + META =================
   doc
     .font("Helvetica-Bold")
     .fontSize(10)
@@ -139,15 +139,15 @@ doc.fillColor("black");
 
   doc
     .font("Helvetica-Bold")
-    .text(invoice.clientSnapshot.name, startX, y);
+    .text(invoice.customerSnapshot.name, startX, y);
 
   doc
     .font("Helvetica")
     .fontSize(10)
     .fillColor("gray")
-    .text(invoice.clientSnapshot.email, startX, y + 15);
+    .text(invoice.customerSnapshot.email, startX, y + 15);
 
-  doc.text(invoice.clientSnapshot.address, startX, y + 30);
+  doc.text(invoice.customerSnapshot.address, startX, y + 30);
 
   // RIGHT META
   doc.fillColor("black").font("Helvetica").fontSize(10);

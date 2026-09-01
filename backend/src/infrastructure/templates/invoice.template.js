@@ -1,4 +1,4 @@
-module.exports = ({ clientName, invoiceNumber, amount, dueDate, companyName, payNowLink }) => {
+module.exports = ({ customerName, invoiceNumber, amount, dueDate, companyName, payNowLink }) => {
   return `
   <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:30px;">
     
@@ -6,7 +6,7 @@ module.exports = ({ clientName, invoiceNumber, amount, dueDate, companyName, pay
       
       <h2 style="color:#333;">Invoice from ${companyName}</h2>
 
-      <p>Hello <strong>${clientName}</strong>,</p>
+      <p>Hello <strong>${customerName}</strong>,</p>
 
       <p>
         Thank you for your business. Please find your invoice details below.

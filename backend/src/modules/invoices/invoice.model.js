@@ -15,7 +15,7 @@ const paymentSchema = new mongoose.Schema(
     },
     reference: String,
   },
-  { _id: false }
+  { _id: false },
 );
 
 // Invoice Item
@@ -39,11 +39,11 @@ const itemSchema = new mongoose.Schema(
 
     total: Number,
   },
-  { _id: false }
+  { _id: false },
 );
 
 // Client Snapshot
-const clientSnapshotSchema = new mongoose.Schema(
+const customerSnapshotSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
@@ -53,7 +53,7 @@ const clientSnapshotSchema = new mongoose.Schema(
     companyName: String,
     taxId: String,
   },
-  { _id: false }
+  { _id: false },
 );
 
 // Payment Methods
@@ -62,7 +62,7 @@ const paymentMethodSchema = new mongoose.Schema(
     method: String,
     details: String,
   },
-  { _id: false }
+  { _id: false },
 );
 
 // Fees
@@ -71,7 +71,7 @@ const feeSchema = new mongoose.Schema(
     label: String,
     amount: Number,
   },
-  { _id: false }
+  { _id: false },
 );
 
 // ==============================
@@ -92,12 +92,24 @@ const invoiceSchema = new mongoose.Schema(
       required: true,
     },
 
-    clientId: {
+    createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Client",
+      ref: "User",
+      required: true,
     },
 
-    // 🔥 STATUS
+    workspaceId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Workspace",
+      required: true,
+    },
+
+    customerId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Customer",
+    },
+
+    //  STATUS
     status: {
       type: String,
       enum: [
@@ -112,7 +124,7 @@ const invoiceSchema = new mongoose.Schema(
       default: "draft",
     },
 
-    // 🔥 TYPE + TEMPLATE
+    //  TYPE + TEMPLATE
     type: {
       type: String,
       enum: ["standard", "service", "subscription", "freelance"],
@@ -143,27 +155,32 @@ const invoiceSchema = new mongoose.Schema(
     issueDate: String,
     dueDate: { type: String, required: true },
 
-    // 🔥 TRACKING
+    //  TRACKING
     sentAt: String,
     viewedAt: String,
     paidAt: String,
 
-    // 🔥 CLIENT SNAPSHOT
-    clientSnapshot: clientSnapshotSchema,
+    //  CLIENT SNAPSHOT
+    customerSnapshot: customerSnapshotSchema,
 
-    // 🔥 ITEMS
-    items: [itemSchema],
+    //  ITEMS
+    items: {
+      type: [itemSchema],
+      default: null,
+      required: false,
+    },
 
-    // 🔥 SERVICE DETAILS
+    //  SERVICE DETAILS
     serviceDetails: {
       totalHours: Number,
       hourlyRate: Number,
       projectName: String,
     },
 
-    // 🔥 SUBSCRIPTION
+    //  SUBSCRIPTION
     subscriptionDetails: {
       planName: String,
+      planPrice: Number,
       billingCycle: {
         type: String,
         enum: ["monthly", "yearly"],
@@ -173,14 +190,14 @@ const invoiceSchema = new mongoose.Schema(
       nextBillingDate: String,
     },
 
-    // 🔥 SHIPPING
+    //  SHIPPING
     shipping: {
       cost: Number,
       method: String,
       address: String,
     },
 
-    // 🔥 DISCOUNT
+    //  DISCOUNT
     discount: {
       type: {
         type: String,
@@ -190,7 +207,7 @@ const invoiceSchema = new mongoose.Schema(
       value: { type: Number, default: 0 },
     },
 
-    // 🔥 TAX
+    //  TAX
     tax: {
       type: {
         type: String,
@@ -200,14 +217,14 @@ const invoiceSchema = new mongoose.Schema(
       value: { type: Number, default: 0 },
     },
 
-    // 🔥 EXTRA FEES
+    //  EXTRA FEES
     fees: [feeSchema],
 
-    // 🔥 PAYMENTS
+    //  PAYMENTS
     paymentMethods: [paymentMethodSchema],
     payments: [paymentSchema],
 
-    // 🔥 CALCULATED FIELDS
+    //  CALCULATED FIELDS
     subtotal: Number,
     totalTax: Number,
     totalDiscount: Number,
@@ -215,21 +232,21 @@ const invoiceSchema = new mongoose.Schema(
     balanceDue: Number,
     total: Number,
 
-    // 🔥 EXTRA INFO
+    //  EXTRA INFO
     notes: String,
     terms: String,
 
-    // 🔥 BRANDING
+    //  BRANDING
     logoUrl: String,
     accentColor: String,
 
-    // 🔥 SYSTEM
+    //  SYSTEM
     isDeleted: {
       type: Boolean,
       default: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 // ==============================

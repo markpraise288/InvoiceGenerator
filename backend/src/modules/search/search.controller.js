@@ -4,14 +4,14 @@ const searchService = require("./search.service");
 // 🔍 GLOBAL SEARCH
 const globalSearch = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const user = req.user;
     const { q } = req.query;
 
     if (!q) {
       return res.json({ invoices: [], clients: [] });
     }
 
-    const result = await searchService.globalSearch(userId, q);
+    const result = await searchService.globalSearch(user, q);
     res.json(result);
   } catch (err) {
     console.error(err);

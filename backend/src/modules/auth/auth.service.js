@@ -7,6 +7,7 @@ const {
 const crypto = require("crypto");
 const wecomeTemplate = require("../../infrastructure/templates/welcome.template");
 const resetPasswordTemplate = require("../../infrastructure/templates/resetPassword.template");
+const Workspace = require("../settings/workspace.model");
 const sendEmail = require("../../infrastructure/email/email.service").sendEmail;
 
 const signup = async ({ email, password, phone, name, companyName, address }) => {
@@ -20,14 +21,23 @@ const signup = async ({ email, password, phone, name, companyName, address }) =>
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  const workspace = await Workspace.create({
+    name: companyName
+  });
+
   const user = await User.create({
     email,
     password: hashedPassword,
     phone,
     name,
     address,
-    companyName
+    companyName,
+    workspaceId: workspace._id
   });
+
+  // The workspace couldn't have an owner until the user existed — set it now
+  workspace.ownerId = user._id;
+  await workspace.save();
 
   const accessToken = await generateAccessToken(user);
   const refreshToken = await generateRefreshToken(user);
@@ -70,6 +80,71 @@ const login = async ({ email, password }) => {
   await user.save();
 
   return { accessToken, refreshToken };
+};
+
+// Called by googleCallbackHandler with the verified Google profile
+// (req.user, passed through untouched by passport.js). Mirrors signup():
+// find-or-create a user + workspace, then issue tokens the same way.
+//
+// Note: if the callback carries an invitation token (state param), it tries
+// invitation.service.js's acceptInvitationViaGoogle() FIRST and only falls
+// back to this function if there's no invite or it didn't match — see
+// auth.google.controller.js.
+const loginWithGoogle = async (profile) => {
+  const email = profile.emails?.[0]?.value;
+
+  if (!email) {
+    const error = new Error("Google account has no public email");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  let user = await User.findOne({ $or: [{ googleId: profile.id }, { email }] });
+  let isNewUser = false;
+
+  if (!user) {
+    isNewUser = true;
+
+    // Placeholder name — Google doesn't give us a company. The user fills
+    // in the real one on /profile right after this (see googleCallbackHandler).
+    const workspace = await Workspace.create({
+      name: `${profile.displayName || "My"}'s Workspace`,
+    });
+
+    user = await User.create({
+      googleId: profile.id,
+      name: profile.displayName,
+      email,
+      avatar: profile.photos?.[0]?.value,
+      workspaceId: workspace._id,
+      // no password — schema allows this when googleId is set
+    });
+
+    workspace.ownerId = user._id;
+    await workspace.save();
+
+    await sendEmail({
+      to: user.email,
+      subject: "Welcome",
+      html: wecomeTemplate({
+        name: user.name,
+      }),
+    });
+  } else if (!user.googleId) {
+    // Existing email/password account signing in with Google for the first time
+    user.googleId = profile.id;
+    await user.save();
+  }
+
+  const accessToken = await generateAccessToken(user);
+  const refreshToken = await generateRefreshToken(user);
+
+  // Same as signup/login — refreshAccessToken() and logout() both look users
+  // up by this field, so a Google session has to persist it too
+  user.refreshToken = refreshToken;
+  await user.save();
+
+  return { accessToken, refreshToken, isNewUser };
 };
 
 const logout = async ({ refreshToken }) => {
@@ -128,13 +203,10 @@ const forgotPassword = async ({ email }) => {
 };
 
 const resetPassword = async ({ token, newPassword }) => {
-  console.log(new Date(Date.now() + 3600000));
   const user = await User.findOne({
     resetPasswordToken: token,
     resetPasswordExpiry: { $gt: new Date(Date.now()) },
   });
-
-  console.log(user);
 
   if (!user) {
     const error = new Error("Invalid or expired reset token");
@@ -155,6 +227,7 @@ module.exports = {
   signup,
   refreshAccessToken,
   login,
+  loginWithGoogle,
   logout,
   forgotPassword,
   resetPassword,

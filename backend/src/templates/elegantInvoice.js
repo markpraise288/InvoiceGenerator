@@ -126,14 +126,14 @@ const generateElegantInvoice = (doc, invoice, user) => {
     .font("Helvetica-Bold")
     .fontSize(12)
     .fillColor("#111")
-    .text(invoice.clientSnapshot.name, marginX, y);
+    .text(invoice.customerSnapshot.name, marginX, y);
 
   doc
     .font("Helvetica")
     .fontSize(10)
     .fillColor("#6b7280")
-    .text(invoice.clientSnapshot.email, marginX, y + 15)
-    .text(invoice.clientSnapshot.address, marginX, y + 30);
+    .text(invoice.customerSnapshot.email, marginX, y + 15)
+    .text(invoice.customerSnapshot.address, marginX, y + 30);
 
   y += 60;
 

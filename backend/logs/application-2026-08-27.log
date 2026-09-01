@@ -1,0 +1,185 @@
+{"level":"warn","message":"MongoDB disconnected","service":"invoice-service","timestamp":"2026-08-27 08:01:59"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 17:53:02"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 17:53:02"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 17:55:34"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 17:55:34"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 17:55:44"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-08-27 17:55:44"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-08-27 17:55:44"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 17:55:44"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-07-31T22%3A00%3A00.000Z&to=2026-08-27T15%3A55%3A46.979Z","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-07-31T22%3A00%3A00.000Z&to=2026-08-27T15%3A55%3A46.979Z","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-08-27 17:55:47"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 17:55:59"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:00"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 17:56:00"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:00"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 17:56:01"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:01"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 17:56:01"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:01"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 17:56:02"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:02"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 17:56:03"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:03"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 17:56:03"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:56:03"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 17:59:02"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 17:59:02"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 17:59:04"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:10"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:06:11"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:09:27"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:09:27"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:10:44"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:10:44"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:14:31"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:14:31"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/settings/team - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/overview - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 18:14:33"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:04"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:09"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:10"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:12"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:16"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:48"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:49"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"error","message":"[GET] /api/team/6a7073073ff34a1cbbb222f9/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"error","message":"[GET] /api/team/6a75a8883d6e50437c75f71b/stats - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"error","message":"[GET] /api/team/leaderboard?metric=wonValue - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:51"}
+{"level":"info","message":"GET /api/reports/overview","service":"invoice-service","timestamp":"2026-08-27 18:15:53"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:15:57"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:57"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:15:58"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:15:58"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:16:00"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:16:00"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:16:28"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:16:28"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:21:15"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:21:15"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:21:17"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:21:17"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:21:19"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:21:19"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:21:34"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:21:34"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:26:09"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:26:09"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:26:12"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:26:12"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:26:14"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:26:14"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:28:02"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:28:02"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:29:15"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:29:15"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:29:17"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:29:17"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:29:24"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:29:24"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:29:25"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:29:25"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:29:44"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:29:44"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:29:45"}
+{"level":"error","message":"[GET] /api/reports/activity - Invalid token","service":"invoice-service","timestamp":"2026-08-27 18:29:45"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-08-27 18:29:45"}
+{"level":"info","message":"GET /api/reports/activity","service":"invoice-service","timestamp":"2026-08-27 18:29:45"}
+{"level":"error","message":"[GET] /api/reports/activity - Activity.aggregate is not a function","service":"invoice-service","timestamp":"2026-08-27 18:29:45"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-08-27 18:30:51"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-08-27 18:30:51"}

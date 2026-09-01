@@ -1,88 +1,92 @@
-const {
-  getFinanceSummary,
-  getMonthlyBreakdown,
-  getExpenseBreakdown,
-  getCashFlow,
-} = require("./finance.service");
-
 const asyncHandler = require("../../utils/asyncHandler");
 const ApiResponse = require("../../utils/apiResponse");
+const financeService = require("./finance.service");
+const {
+  createBudgetSchema,
+  updateBudgetSchema,
+  listBudgetsQuerySchema,
+  profitLossQuerySchema,
+  cashFlowQuerySchema,
+  budgetVsActualQuerySchema,
+} = require("./finance.validation");
 
-// ==============================
-// 🔹 FINANCE SUMMARY
-// ==============================
-const getFinanceSummaryHandler = asyncHandler(async (req, res) => {
-  const data = await getFinanceSummary(req.user.id, req.query);
+// ---------- BUDGETS ----------
 
-  res.json(
-    new ApiResponse(200, "Finance summary retrieved successfully", data)
-  );
+const createBudget = asyncHandler(async (req, res) => {
+  const { error, value } = createBudgetSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const budget = await financeService.createBudget(value, req.user);
+  return res.status(201).json(new ApiResponse(201, "Budget created successfully", budget));
 });
 
-// ==============================
-// 🔹 FINANCE STATS (FOR DASHBOARD KPI)
-// ==============================
-const getFinanceStatsHandler = asyncHandler(async (req, res) => {
-  const data = await getFinanceSummary(req.user.id, req.query);
+const getBudgets = asyncHandler(async (req, res) => {
+  const { error, value } = listBudgetsQuerySchema.validate(req.query);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
 
-  // return only lightweight data (faster for dashboard)
-  const stats = {
-    totalRevenue: data.totalRevenue,
-    totalExpenses: data.totalExpenses,
-    netProfit: data.netProfit,
-    profitMargin: data.summary.profitMargin,
-    trend: {
-      value: data.summary.trend.value,
-      percentage: data.summary.trend.percentage,
-    }
-  };
-
-  res.json(
-    new ApiResponse(200, "Finance stats retrieved successfully", stats)
-  );
+  const result = await financeService.getBudgets(value, req.user);
+  return res.status(200).json(new ApiResponse(200, "Budgets fetched successfully", result));
 });
 
-// ==============================
-// 🔹 MONTHLY BREAKDOWN
-// ==============================
-const getMonthlyFinanceHandler = asyncHandler(async (req, res) => {
-  const data = await getMonthlyBreakdown(req.user.id, req.query);
+const updateBudget = asyncHandler(async (req, res) => {
+  const { error, value } = updateBudgetSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
 
-  res.json(
-    new ApiResponse(200, "Monthly finance data retrieved successfully", data)
-  );
+  const budget = await financeService.updateBudget(req.params.id, value);
+  return res.status(200).json(new ApiResponse(200, "Budget updated successfully", budget));
 });
 
-// ==============================
-// 🔹 EXPENSE BREAKDOWN
-// ==============================
-const getExpenseBreakdownHandler = asyncHandler(async (req, res) => {
-  const data = await getExpenseBreakdown(req.user.id, req.query);
-
-  res.json(
-    new ApiResponse(200, "Expense breakdown retrieved successfully", data)
-  );
+const deleteBudget = asyncHandler(async (req, res) => {
+  await financeService.deleteBudget(req.params.id);
+  return res.status(200).json(new ApiResponse(200, "Budget deleted successfully", null));
 });
 
-// ==============================
-// 🔹 CASH FLOW
-// ==============================
-const getCashFlowHandler = asyncHandler(async (req, res) => {
-  const limit = Math.min(parseInt(req.query.limit) || 20, 100); // 🔥 prevent abuse
+// ---------- REPORTS ----------
 
-  const data = await getCashFlow(req.user.id, limit);
+const getProfitAndLoss = asyncHandler(async (req, res) => {
+  const { error, value } = profitLossQuerySchema.validate(req.query);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
 
-  res.json(
-    new ApiResponse(200, "Cash flow retrieved successfully", {
-      transactions: data,
-    })
-  );
+  const report = await financeService.getProfitAndLoss(value, req.user);
+  return res.status(200).json(new ApiResponse(200, "P&L report fetched successfully", report));
+});
+
+const getCashFlow = asyncHandler(async (req, res) => {
+  const { error, value } = cashFlowQuerySchema.validate(req.query);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const report = await financeService.getCashFlow(value, req.user);
+  return res.status(200).json(new ApiResponse(200, "Cash flow report fetched successfully", report));
+});
+
+const getBudgetVsActual = asyncHandler(async (req, res) => {
+  const { error, value } = budgetVsActualQuerySchema.validate(req.query);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const result = await financeService.getBudgetVsActual(value, req.user);
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Budget vs. actual fetched successfully", result));
 });
 
 module.exports = {
-  getFinanceSummaryHandler,
-  getFinanceStatsHandler,     // 🔥 NEW
-  getMonthlyFinanceHandler,   // 🔥 NEW
-  getExpenseBreakdownHandler,
-  getCashFlowHandler,
+  createBudget,
+  getBudgets,
+  updateBudget,
+  deleteBudget,
+  getProfitAndLoss,
+  getCashFlow,
+  getBudgetVsActual,
 };

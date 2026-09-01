@@ -4,7 +4,7 @@ const asyncHandler = require('../../utils/asyncHandler');
 
 const createInvoiceHandler = asyncHandler(async (req, res) => {
   const { invoice, pdfBuffer } = await createInvoice(
-    req.user.id,
+    req.user,
     req.body,
     req.query.send
   );
@@ -19,14 +19,26 @@ const createInvoiceHandler = asyncHandler(async (req, res) => {
   return res.status(201).send(pdfBuffer);
 });
 
-const downloadInvoicePDFHandler = asyncHandler( async(req, res) => {
-    const filePath = await downloadInvoicePDF(req.params.id);
-    res.download(filePath, (err) => {
-        if (err) {
-            console.error('Error sending file:', err);
-            res.status(500).json(new ApiResponse(500, 'Error downloading invoice PDF'));
-        }
-    });
+const downloadInvoicePDFHandler = asyncHandler(async (req, res) => {
+  const invoiceId = req.params.id;
+
+  let result;
+  try {
+    result = await downloadInvoicePDF(invoiceId);
+  } catch (err) {
+    const status = err.status ?? 500;
+    const error = new Error(err.message || "Failed to generate invoice PDF");
+    error.statusCode = status;
+    throw error;
+  }
+
+  const { pdfBuffer, fileName } = result;
+
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+  res.setHeader("Content-Length", pdfBuffer.length);
+
+  return res.send(pdfBuffer);
 });
 
 const getInvoiceByIdHandler = asyncHandler( async(req, res) => {
@@ -38,7 +50,7 @@ const getInvoiceByIdHandler = asyncHandler( async(req, res) => {
 });
 
 const updateInvoiceHandler = asyncHandler( async(req, res) => {
-    const invoice = await updateInvoice(req.params.id, req.body);
+    const invoice = await updateInvoice(req.params.id, req.body, req.user);
     if (!invoice) {
         return res.status(404).json( new ApiResponse(404, 'Invoice not found') );
     }
@@ -46,7 +58,7 @@ const updateInvoiceHandler = asyncHandler( async(req, res) => {
 });
 
 const deleteInvoiceHandler = asyncHandler( async(req, res) => {
-    const invoice = await deleteInvoice(req.params.id);
+    const invoice = await deleteInvoice(req.params.id, req.user);
     if (!invoice) {
         return res.status(404).json( new ApiResponse(404, 'Invoice not found') );
     }
@@ -59,7 +71,7 @@ const deleteInvoicePermanentlyHandler = asyncHandler( async(req, res) => {
 });
 
 const getInvoicesHandler = asyncHandler( async(req, res) => {
-    const invoices = await getInvoices(req.user.id);
+    const invoices = await getInvoices(req.user);
     res.json( new ApiResponse(200, 'Invoices retrieved successfully', invoices) );
 });
 

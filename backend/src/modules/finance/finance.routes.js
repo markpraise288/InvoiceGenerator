@@ -1,65 +1,26 @@
 const express = require("express");
 const router = express.Router();
 
-const authMiddleware = require("../../middlewares/auth.middleware");
-const validate = require("../../middlewares/validate");
-
+const verifyToken = require("../../middlewares/auth.middleware");
 const {
-  summaryQuerySchema,
-  breakdownQuerySchema,
-  cashFlowQuerySchema,
-} = require("./finance.validation");
-
-const {
-  getFinanceSummaryHandler,
-  getFinanceStatsHandler,      // ✅ NEW
-  getMonthlyFinanceHandler,    // ✅ NEW
-  getExpenseBreakdownHandler,
-  getCashFlowHandler,
+  createBudget,
+  getBudgets,
+  updateBudget,
+  deleteBudget,
+  getProfitAndLoss,
+  getCashFlow,
+  getBudgetVsActual,
 } = require("./finance.controller");
 
-// ==============================
-// 🔐 AUTH
-// ==============================
-router.use(authMiddleware);
+router.use(verifyToken);
 
-// ==============================
-// 🔹 FINANCE ROUTES
-// ==============================
+// ---------- BUDGETS ----------
+router.route("/budgets").post(createBudget).get(getBudgets);
+router.route("/budgets/:id").put(updateBudget).delete(deleteBudget);
 
-// Full summary (heavy)
-router.get(
-  "/summary",
-  validate(summaryQuerySchema),
-  getFinanceSummaryHandler
-);
-
-// 🔥 Dashboard stats (lightweight)
-router.get(
-  "/stats",
-  validate(summaryQuerySchema),
-  getFinanceStatsHandler
-);
-
-// 🔥 Monthly analytics (charts)
-router.get(
-  "/monthly",
-  validate(summaryQuerySchema),
-  getMonthlyFinanceHandler
-);
-
-// Expense analytics
-router.get(
-  "/expense-breakdown",
-  validate(breakdownQuerySchema),
-  getExpenseBreakdownHandler
-);
-
-// Cash flow (recent transactions)
-router.get(
-  "/cash-flow",
-  validate(cashFlowQuerySchema),
-  getCashFlowHandler
-);
+// ---------- REPORTS ----------
+router.get("/profit-loss", getProfitAndLoss);
+router.get("/cash-flow", getCashFlow);
+router.get("/budget-vs-actual", getBudgetVsActual);
 
 module.exports = router;

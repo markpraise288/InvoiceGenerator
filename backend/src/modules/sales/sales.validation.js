@@ -1,65 +1,58 @@
-const { clientCommandMessageReg } = require("bullmq");
-const joi = require("joi");
+const Joi = require("joi");
 
-// ==============================
-// 🔹 CREATE SALE SCHEMA
-// ==============================
-const createSaleSchema = joi.object({
-  // source is forced to "manual" in controller
-  source: joi.string().valid("manual").default("manual"),
+const objectId = Joi.string().regex(/^[0-9a-fA-F]{24}$/).message("Invalid ID format");
 
-  clientId: joi.string().allow(null),
+const statusEnum = ["draft", "pending", "paid", "cancelled", "refunded"];
 
-  client: joi.string().allow(null),
-
-  amount: joi.number().min(0).required(),
-
-  status: joi.string().valid("paid", "pending").default("paid"),
-
-  date: joi.date().default(Date.now),
-
-  notes: joi.string().allow("", null),
+const lineItemSchema = Joi.object({
+  description: Joi.string().trim().min(1).max(300).required(),
+  quantity: Joi.number().integer().min(1).required(),
+  unitPrice: Joi.number().integer().min(0).required(), // cents
 });
 
-// ==============================
-// 🔹 UPDATE SALE SCHEMA
-// ==============================
-const updateSaleSchema = joi.object({
-  // source cannot be updated
-  client: joi.string().allow(null),
-
-  amount: joi.number().min(0),
-
-  status: joi.string().valid("paid", "pending"),
-
-  date: joi.date(),
-
-  notes: joi.string().allow("", null),
+const createSaleSchema = Joi.object({
+  customer: objectId.required(),
+  lineItems: Joi.array().items(lineItemSchema).min(1).required(),
+  discount: Joi.number().integer().min(0).optional(), // cents
+  tax: Joi.number().integer().min(0).optional(), // cents
+  currency: Joi.string().trim().length(3).uppercase().optional(),
+  status: Joi.string().valid(...statusEnum).optional(),
+  saleDate: Joi.date().optional(),
+  notes: Joi.string().trim().allow("").optional(),
+  owner: objectId.optional().allow(null),
 });
 
-// ==============================
-// 🔹 QUERY SCHEMA (FILTERS & PAGINATION)
-// ==============================
-const querySchema = joi.object({
-  status: joi.string().valid("paid", "pending"),
+const updateSaleSchema = Joi.object({
+  customer: objectId.optional(),
+  lineItems: Joi.array().items(lineItemSchema).min(1).optional(),
+  discount: Joi.number().integer().min(0).optional(),
+  tax: Joi.number().integer().min(0).optional(),
+  currency: Joi.string().trim().length(3).uppercase().optional(),
+  saleDate: Joi.date().optional(),
+  notes: Joi.string().trim().allow("").optional(),
+  owner: objectId.optional().allow(null),
+  // status intentionally excluded — dedicated status endpoint, same pattern as everywhere else
+}).min(1);
 
-  source: joi.string().valid("invoice", "manual"),
+const updateSaleStatusSchema = Joi.object({
+  status: Joi.string().valid(...statusEnum).required(),
+});
 
-  startDate: joi.date().iso(),
-
-  endDate: joi.date().iso(),
-
-  page: joi.number().integer().min(1).default(1),
-
-  limit: joi.number().integer().min(1).max(100).default(10),
-
-  sortBy: joi.string().valid("date", "amount", "status", "createdAt").default("date"),
-
-  sortOrder: joi.number().valid(1, -1).default(-1),
+const listSalesQuerySchema = Joi.object({
+  search: Joi.string().trim().allow("").optional(), // matches saleNumber or customer name
+  customer: objectId.optional(),
+  status: Joi.string().valid(...statusEnum).optional(),
+  dateFrom: Joi.date().optional(),
+  dateTo: Joi.date().optional(),
+  page: Joi.number().integer().min(1).optional(),
+  limit: Joi.number().integer().min(1).max(100).optional(),
+  sortBy: Joi.string().valid("saleDate", "createdAt", "total", "saleNumber").optional(),
+  sortOrder: Joi.string().valid("asc", "desc").optional(),
 });
 
 module.exports = {
   createSaleSchema,
   updateSaleSchema,
-  querySchema,
+  updateSaleStatusSchema,
+  listSalesQuerySchema,
 };

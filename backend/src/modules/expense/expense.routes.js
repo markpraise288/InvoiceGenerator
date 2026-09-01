@@ -1,34 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../../middlewares/auth.middleware");
-const validate = require("../../middlewares/validate");
+
+const verifyToken = require("../../middlewares/auth.middleware");
 const {
-  createExpenseSchema,
-  updateExpenseSchema,
-  querySchema,
-} = require("./expense.validation");
-const {
-  createExpenseHandler,
-  getExpensesHandler,
-  getExpenseByIdHandler,
-  updateExpenseHandler,
-  deleteExpenseHandler,
-  deleteExpensePermanentlyHandler,
-  restoreExpenseHandler
+  createExpense,
+  getExpenses,
+  getExpensesSummary,
+  getExpenseById,
+  updateExpense,
+  approveExpense,
+  rejectExpense,
+  markExpensePaid,
+  deleteExpense,
 } = require("./expense.controller");
 
-// All routes require authentication
-router.use(authMiddleware);
+router.use(verifyToken);
 
-// ==============================
-// 🔹 ROUTES
-// ==============================
-router.post("/", validate(createExpenseSchema), createExpenseHandler);
-router.get("/", validate(querySchema), getExpensesHandler);
-router.get("/:id", getExpenseByIdHandler);
-router.put("/:id", validate(updateExpenseSchema), updateExpenseHandler);
-router.delete("/:id", deleteExpenseHandler);
-router.delete("/:id/permanent", deleteExpensePermanentlyHandler);
-router.patch("/:id", restoreExpenseHandler);
+router.route("/").post(createExpense).get(getExpenses);
+
+router.get("/summary", getExpensesSummary);
+
+router
+  .route("/:id")
+  .get(getExpenseById)
+  .put(updateExpense)
+  .delete(deleteExpense);
+
+router.patch("/:id/approve", approveExpense);
+router.patch("/:id/reject", rejectExpense);
+router.patch("/:id/mark-paid", markExpensePaid);
 
 module.exports = router;

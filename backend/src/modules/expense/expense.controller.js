@@ -1,60 +1,98 @@
-const {
-  createExpense,
-  getExpenses,
-  getExpenseById,
-  updateExpense,
-  deleteExpense,
-  deleteExpensePermanently,
-  restoreExpense
-} = require("./expense.service");
 const asyncHandler = require("../../utils/asyncHandler");
 const ApiResponse = require("../../utils/apiResponse");
+const expenseService = require("./expense.service");
+const {
+  createExpenseSchema,
+  updateExpenseSchema,
+  rejectExpenseSchema,
+  markExpensePaidSchema,
+  listExpensesQuerySchema,
+} = require("./expense.validation");
 
-// ==============================
-// 🔹 CONTROLLER HANDLERS
-// ==============================
+const createExpense = asyncHandler(async (req, res) => {
+  const { error, value } = createExpenseSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
 
-const createExpenseHandler = asyncHandler(async (req, res) => {
-  const expense = await createExpense(req.user.id, req.body);
-  res.status(201).json(new ApiResponse(201, "Expense created successfully", expense));
+  const expense = await expenseService.createExpense(value, req.user);
+  return res.status(201).json(new ApiResponse(201, "Expense submitted successfully", expense));
 });
 
-const getExpensesHandler = asyncHandler(async (req, res) => {
-  const expenses = await getExpenses(req.user.id, req.query);
-  res.json(new ApiResponse(200, "Expenses retrieved successfully", expenses));
+const getExpenses = asyncHandler(async (req, res) => {
+  const { error, value } = listExpensesQuerySchema.validate(req.query);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const result = await expenseService.getExpenses(value, req.user);
+  return res.status(200).json(new ApiResponse(200, "Expenses fetched successfully", result));
 });
 
-const getExpenseByIdHandler = asyncHandler(async (req, res) => {
-  const expense = await getExpenseById(req.params.id, req.user.id);
-  res.json(new ApiResponse(200, "Expense retrieved successfully", expense));
+const getExpensesSummary = asyncHandler(async (req, res) => {
+  const summary = await expenseService.getExpensesSummary(req.query, req.user);
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Expenses summary fetched successfully", summary));
 });
 
-const updateExpenseHandler = asyncHandler(async (req, res) => {
-  const expense = await updateExpense(req.params.id, req.user.id, req.body);
-  res.json(new ApiResponse(200, "Expense updated successfully", expense));
+const getExpenseById = asyncHandler(async (req, res) => {
+  const expense = await expenseService.getExpenseById(req.params.id);
+  return res.status(200).json(new ApiResponse(200, "Expense fetched successfully", expense));
 });
 
-const deleteExpenseHandler = asyncHandler(async (req, res) => {
-  const expense = await deleteExpense(req.params.id, req.user.id);
-  res.json(new ApiResponse(200, "Expense deleted successfully", expense));
+const updateExpense = asyncHandler(async (req, res) => {
+  const { error, value } = updateExpenseSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const expense = await expenseService.updateExpense(req.params.id, value);
+  return res.status(200).json(new ApiResponse(200, "Expense updated successfully", expense));
 });
 
-const deleteExpensePermanentlyHandler = asyncHandler(async (req, res) => {
-  const result = await deleteExpensePermanently(req.params.id, req.user.id);
-  res.json(new ApiResponse(200, result.message));
+const approveExpense = asyncHandler(async (req, res) => {
+  const expense = await expenseService.approveExpense(req.params.id, req.user.id);
+  return res.status(200).json(new ApiResponse(200, "Expense approved successfully", expense));
 });
 
-const restoreExpenseHandler = asyncHandler(async (req, res) => {
-  const expense = await restoreExpense(req.params.id, req.user.id);
-  res.json(new ApiResponse(200, "Expense restored successfully", expense));
+const rejectExpense = asyncHandler(async (req, res) => {
+  const { error, value } = rejectExpenseSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const expense = await expenseService.rejectExpense(
+    req.params.id,
+    value.rejectionReason,
+    req.user.id
+  );
+  return res.status(200).json(new ApiResponse(200, "Expense rejected", expense));
+});
+
+const markExpensePaid = asyncHandler(async (req, res) => {
+  const { error, value } = markExpensePaidSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json(new ApiResponse(400, error.details[0].message, null));
+  }
+
+  const expense = await expenseService.markExpensePaid(req.params.id, value.paidAt);
+  return res.status(200).json(new ApiResponse(200, "Expense marked as paid", expense));
+});
+
+const deleteExpense = asyncHandler(async (req, res) => {
+  await expenseService.deleteExpense(req.params.id);
+  return res.status(200).json(new ApiResponse(200, "Expense deleted successfully", null));
 });
 
 module.exports = {
-  createExpenseHandler,
-  getExpensesHandler,
-  getExpenseByIdHandler,
-  updateExpenseHandler,
-  deleteExpenseHandler,
-  deleteExpensePermanentlyHandler,
-  restoreExpenseHandler
+  createExpense,
+  getExpenses,
+  getExpensesSummary,
+  getExpenseById,
+  updateExpense,
+  approveExpense,
+  rejectExpense,
+  markExpensePaid,
+  deleteExpense,
 };

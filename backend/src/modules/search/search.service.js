@@ -1,21 +1,21 @@
 // modules/search/search.service.js
 const Invoice = require("../invoices/invoice.model");
-const Client = require("../client/client.model");
+const Customer = require("../customers/customer.model");
 const SearchHistory = require("./search.model");
 
-const globalSearch = async (userId, query) => {
+const globalSearch = async (user, query) => {
   const regex = new RegExp(query, "i");
 
   const [invoices, clients] = await Promise.all([
     Invoice.find({
-      userId: userId,
+      workspaceId: user.workspaceId,
       $or: [{ invoiceNumber: regex }, { "clientSnapshot.name": regex }],
     })
       .sort({ createdAt: -1 })
       .limit(5),
 
-    Client.find({
-      userId: userId,
+    Customer.find({
+      workspaceId: user.workspaceId,
       $or: [{ name: regex }, { email: regex }],
     })
       .sort({ createdAt: -1 })
@@ -28,9 +28,9 @@ const globalSearch = async (userId, query) => {
   ];
 };
 
-const saveSearch = async (userId, query) => {
+const saveSearch = async (user, query) => {
   return SearchHistory.findOneAndUpdate(
-    { userId, query },
+    { userId: user.id, query },
     { query },
     { upsert: true, returnDocument: "after" },
   );

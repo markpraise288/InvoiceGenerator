@@ -69,10 +69,10 @@ function generateClassicInvoice(doc, invoice, user) {
     .fontSize(10)
     .font("Helvetica")
     .fillColor("black")
-    .text(invoice.clientSnapshot.name, marginX, y)
-    .text(invoice.clientSnapshot.address, marginX, y + 15)
-    .text(invoice.clientSnapshot.phone, marginX, y + 30)
-    .text(invoice.clientSnapshot.email, marginX, y + 45);
+    .text(invoice.customerSnapshot.name, marginX, y)
+    .text(invoice.customerSnapshot.address, marginX, y + 15)
+    .text(invoice.customerSnapshot.phone, marginX, y + 30)
+    .text(invoice.customerSnapshot.email, marginX, y + 45);
 
   y += 90;
 

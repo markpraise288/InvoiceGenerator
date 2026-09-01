@@ -7,7 +7,7 @@ const generateBoldSubscriptionInvoice = (
 ) => {
   const sub = invoice.subscriptionDetails || {};
 
-  const price = invoice.items?.[0]?.price || 0;
+  const price = invoice.planPrice || 0;
 
   const discount =
     invoice.discount?.type === "percentage"
@@ -72,7 +72,7 @@ const generateBoldSubscriptionInvoice = (
 
   y += 80;
 
-  // ================= CLIENT =================
+  // ================= CUSTOMER =================
   doc
     .fontSize(9)
     .fillColor("gray")
@@ -83,12 +83,12 @@ const generateBoldSubscriptionInvoice = (
   doc
     .fontSize(11)
     .fillColor("black")
-    .text(invoice.clientSnapshot.name, startX, y);
+    .text(invoice.customerSnapshot.name, startX, y);
 
   doc
     .fontSize(10)
     .fillColor("gray")
-    .text(invoice.clientSnapshot.email, startX, y + 15);
+    .text(invoice.customerSnapshot.email, startX, y + 15);
 
   // RIGHT META
   doc

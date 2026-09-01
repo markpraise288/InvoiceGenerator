@@ -11,34 +11,36 @@ const paymentSchema = joi.object({
   reference: joi.string().allow("", null),
 });
 
-const itemSchema = joi.object({
-  description: joi.string().required(),
+const itemSchema = joi
+  .object({
+    description: joi.string().required(),
 
-  quantity: joi.number().min(1).required(),
-  price: joi.number().min(0).required(),
+    quantity: joi.number().min(1).required(),
+    price: joi.number().min(0).required(),
 
-  unit: joi.string().valid("hrs", "days", "items"),
-  hours: joi.number().min(0),
-  rate: joi.number().min(0),
+    unit: joi.string().valid("hrs", "days", "items"),
+    hours: joi.number().min(0),
+    rate: joi.number().min(0),
 
-  taxRate: joi.number().min(0),
-  discount: joi.number().min(0),
+    taxRate: joi.number().min(0),
+    discount: joi.number().min(0),
 
-  total: joi.number().min(0),
-});
+    total: joi.number().min(0),
+  })
+  .allow(null, { description: "", quantity: 1, price: 0, total: 0 });
 
-const clientSnapshotSchema = joi.object({
+const customerSnapshotSchema = joi.object({
   name: joi.string().required(),
   email: joi.string().email().required(),
-  phone: joi.string().required(),
-  address: joi.string().required(),
+  phone: joi.string().required().allow(null),
+  address: joi.string().required().allow(null),
 
   companyName: joi.string().allow("", null),
   taxId: joi.string().allow("", null),
 });
 
 const paymentMethodSchema = joi.object({
-  method: joi.string().required(),
+  method: joi.string().allow("", null),
   details: joi.string().allow("", null),
 });
 
@@ -57,15 +59,7 @@ const createInvoiceSchema = joi.object({
 
   status: joi
     .string()
-    .valid(
-      "draft",
-      "sent",
-      "viewed",
-      "paid",
-      "partial",
-      "overdue",
-      "cancelled"
-    )
+    .valid("draft", "sent", "viewed", "paid", "partial", "overdue", "cancelled")
     .default("draft"),
 
   type: joi
@@ -83,7 +77,7 @@ const createInvoiceSchema = joi.object({
       "bold",
       "elegant",
       "bold-pro",
-      "compact"
+      "compact",
     )
     .default("modern"),
 
@@ -96,26 +90,50 @@ const createInvoiceSchema = joi.object({
   viewedAt: joi.string(),
   paidAt: joi.string(),
 
-  clientSnapshot: clientSnapshotSchema.required(),
+  customerSnapshot: customerSnapshotSchema.required(),
 
-  // 🔥 ITEMS
-  items: joi.array().items(itemSchema).min(1),
+  // 🔥 ITEMS — only required for "standard" and "freelance" invoices.
+  // "service" and "subscription" invoices carry their pricing in
+  // serviceDetails/subscriptionDetails instead, so an empty or omitted
+  // items array must be allowed for those types.
+  items: joi
+    .array()
+    .items(itemSchema)
+    .allow(null)
+    .when("type", {
+      is: joi.string().valid("standard", "freelance"),
+      then: joi.array().min(1).required(),
+      otherwise: joi.array().min(0).allow(null).optional(),
+    }),
 
   // 🔥 SERVICE
-  serviceDetails: joi.object({
-    totalHours: joi.number().min(0),
-    hourlyRate: joi.number().min(0),
-    projectName: joi.string().allow("", null),
-  }),
+  serviceDetails: joi
+    .object({
+      totalHours: joi.number().min(0),
+      hourlyRate: joi.number().min(0),
+      projectName: joi.string().allow("", null),
+    })
+    .when("type", {
+      is: "service",
+      then: joi.object().required(),
+      otherwise: joi.object().optional(),
+    }),
 
   // 🔥 SUBSCRIPTION
-  subscriptionDetails: joi.object({
-    planName: joi.string().allow("", null),
-    billingCycle: joi.string().valid("monthly", "yearly").required(),
-    startDate: joi.string().required(),
-    endDate: joi.string().allow(null, ""),
-    nextBillingDate: joi.string().allow(null, ""),
-  }),
+  subscriptionDetails: joi
+    .object({
+      planName: joi.string().allow("", null),
+      planPrice: joi.number(),
+      billingCycle: joi.string().valid("monthly", "yearly").required(),
+      startDate: joi.string().required(),
+      endDate: joi.string().allow(null, ""),
+      nextBillingDate: joi.string().allow(null, ""),
+    })
+    .when("type", {
+      is: "subscription",
+      then: joi.object().required(),
+      otherwise: joi.object().optional(),
+    }),
 
   // 🔥 SHIPPING
   shipping: joi.object({
@@ -168,15 +186,17 @@ const updateInvoiceSchema = joi.object({
   clientId: joi.string(),
   userId: joi.string(),
 
-  status: joi.string().valid(
-    "draft",
-    "sent",
-    "viewed",
-    "paid",
-    "partial",
-    "overdue",
-    "cancelled"
-  ),
+  status: joi
+    .string()
+    .valid(
+      "draft",
+      "sent",
+      "viewed",
+      "paid",
+      "partial",
+      "overdue",
+      "cancelled",
+    ),
 
   type: joi.string().valid("standard", "service", "subscription", "freelance"),
   template: joi.string(),
@@ -186,13 +206,23 @@ const updateInvoiceSchema = joi.object({
   issueDate: joi.string(),
   dueDate: joi.string(),
 
-  clientSnapshot: clientSnapshotSchema,
+  customerSnapshot: customerSnapshotSchema,
 
-  items: joi.array().items(itemSchema.keys({ _id: joi.string() })),
-
-  payments: joi.array().items(
-    paymentSchema.keys({ _id: joi.string() })
-  ),
+  // 🔥 ITEMS — same conditional relaxation as create. On update there's no
+  // guaranteed "type" in the payload (partial updates), so this only
+  // enforces min(1) when type is explicitly sent as standard/freelance;
+  // otherwise any items array (including empty/omitted) is accepted.
+  // UPDATE
+  items: joi
+    .array()
+    .items(itemSchema.keys({ _id: joi.string() }))
+    .allow(null)
+    .when("type", {
+      is: joi.string().valid("standard", "freelance"),
+      then: joi.array().min(1),
+      otherwise: joi.array().min(0).allow(null),
+    }),
+  payments: joi.array().items(paymentSchema.keys({ _id: joi.string() })),
 
   serviceDetails: joi.object({
     totalHours: joi.number(),
@@ -226,7 +256,7 @@ const updateInvoiceSchema = joi.object({
 
   fees: joi.array().items(feeSchema),
 
-  paymentMethods: joi.array().items(paymentMethodSchema),
+  paymentMethods: joi.array().items(paymentMethodSchema).allow(null),
 
   notes: joi.string().allow("", null),
   terms: joi.string().allow("", null),

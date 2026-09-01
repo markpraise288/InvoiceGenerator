@@ -1,229 +1,297 @@
+const mongoose = require("mongoose");
 const Sale = require("./sales.model");
-const ApiError = require("../../utils/ApiError");
+const Customer = require("../customers/customer.model");
+const Payment = require("../payments/payment.model");
 
-// ==============================
-// 🔹 CREATE SALE
-// ==============================
-const createSale = async (userId, saleData) => {
+// ---------- COMPUTATION HELPERS ----------
+
+// Recomputes every line item's total and the sale's subtotal/total from raw
+// input — this is the ONLY place sale math happens. Never trust a client-
+// submitted total; always derive it here.
+const computeSaleAmounts = (lineItems, discount = 0, tax = 0) => {
+  const computedLineItems = lineItems.map((item) => ({
+    ...item,
+    total: item.quantity * item.unitPrice,
+  }));
+
+  const subtotal = computedLineItems.reduce((sum, item) => sum + item.total, 0);
+  const total = Math.max(0, subtotal - discount + tax);
+
+  return { lineItems: computedLineItems, subtotal, total };
+};
+
+// Generates a sequential, human-readable sale number (SALE-0001, SALE-0002, ...).
+// Uses a count-based approach rather than a separate counter collection —
+// acceptable for moderate volume; see note below on the race-condition tradeoff.
+const generateSaleNumber = async () => {
+  const count = await Sale.countDocuments();
+  const next = count + 1;
+  return `SALE-${String(next).padStart(4, "0")}`;
+};
+
+// ---------- CRUD ----------
+
+const createSale = async (payload, user) => {
+  const { customer, lineItems, discount = 0, tax = 0, ...rest } = payload;
+
+  const customerDoc = await Customer.findById(customer);
+  if (!customerDoc) {
+    const error = new Error("Customer not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const { lineItems: computedItems, subtotal, total } = computeSaleAmounts(
+    lineItems,
+    discount,
+    tax
+  );
+
+  const saleNumber = await generateSaleNumber();
+
   const sale = await Sale.create({
-    ...saleData,
-    userId,
+    ...rest,
+    customer,
+    saleNumber,
+    lineItems: computedItems,
+    subtotal,
+    discount,
+    tax,
+    total,
+    createdBy: user.id,
+    owner: payload.owner || user.id,
+    workspaceId: user.workspaceId
   });
+
   return sale;
 };
 
-// ==============================
-// 🔹 CREATE SALE FROM INVOICE (AUTOMATED)
-// ==============================
-const createSaleFromInvoice = async (invoice) => {
-  // Only create sale if invoice is paid
-  if (invoice.status !== "paid") {
-    return null;
-  }
-
-  // Check if sale already exists for this invoice
-  const existingSale = await Sale.findOne({
-    invoiceId: invoice._id,
-    userId: invoice.userId,
-  });
-
-  if (existingSale) {
-    return existingSale;
-  }
-
-  // Create sale record
-  console.log(`Creating sale from invoice #${invoice.invoiceNumber} for user ${invoice.userId}`);
-  const sale = await Sale.create({
-    userId: invoice.userId,
-    source: "invoice",
-    invoiceId: invoice._id,
-    clientId: invoice.clientId,
-    client: invoice.clientSnapshot.name,
-    amount: invoice.totalPaid || invoice.total,
-    status: "paid",
-    date: invoice.paidAt || new Date(),
-    notes: `Payment from invoice #${invoice.invoiceNumber}`,
-  });
-
-  return sale;
+// Search-by-customer-name requires resolving customer IDs first (Sale only
+// stores a ref, not a searchable name) — two-step rather than a full
+// aggregation pipeline, simpler to read and reason about at this data volume.
+const resolveCustomerSearchIds = async (search) => {
+  const matchingCustomers = await Customer.find({
+    name: { $regex: search, $options: "i" },
+  })
+    .select("_id")
+    .lean();
+  return matchingCustomers.map((c) => c._id);
 };
 
-// ==============================
-// 🔹 GET SALES WITH FILTERS & PAGINATION
-// ==============================
-const getSales = async (userId, query) => {
+const getSales = async (query, user) => {
   const {
+    search,
+    customer,
     status,
-    source,
-    startDate,
-    endDate,
+    dateFrom,
+    dateTo,
     page = 1,
-    limit = 10,
-    sortBy = "date",
-    sortOrder = -1,
+    limit = 20,
+    sortBy = "saleDate",
+    sortOrder = "desc",
   } = query;
 
-  // Build filter
-  const filter = { userId };
+  const filter = {};
+  filter.workspaceId = user.workspaceId
+  if (customer) filter.customer = customer;
+  if (status) filter.status = status;
 
-  if (status) {
-    filter.status = status;
+  if (dateFrom || dateTo) {
+    filter.saleDate = {};
+    if (dateFrom) filter.saleDate.$gte = new Date(dateFrom);
+    if (dateTo) filter.saleDate.$lte = new Date(dateTo);
   }
 
-  if (source) {
-    filter.source = source;
+  if (search) {
+    const customerIds = await resolveCustomerSearchIds(search);
+    filter.$or = [
+      { saleNumber: { $regex: search, $options: "i" } },
+      ...(customerIds.length ? [{ customer: { $in: customerIds } }] : []),
+    ];
   }
 
-  if (startDate || endDate) {
-    filter.date = {};
-    if (startDate) {
-      filter.date.$gte = new Date(startDate);
-    }
-    if (endDate) {
-      filter.date.$lte = new Date(endDate);
-    }
-  }
-
-  // Pagination
-  const skip = (parseInt(page) - 1) * parseInt(limit);
-  const sort = { [sortBy]: sortOrder };
+  const skip = (Number(page) - 1) * Number(limit);
+  const sort = { [sortBy]: sortOrder === "asc" ? 1 : -1 };
 
   const [sales, total] = await Promise.all([
     Sale.find(filter)
+      .populate("customer", "name email")
+      .populate("owner", "name email")
       .sort(sort)
       .skip(skip)
-      .limit(parseInt(limit))
-      .populate("clientId", "name email")
+      .limit(Number(limit))
       .lean(),
     Sale.countDocuments(filter),
   ]);
 
   return {
-    data: sales,
+    sales,
     pagination: {
-      page: parseInt(page),
-      limit: parseInt(limit),
       total,
-      pages: Math.ceil(total / parseInt(limit)),
+      page: Number(page),
+      limit: Number(limit),
+      totalPages: Math.ceil(total / Number(limit)),
     },
   };
 };
 
-// ==============================
-// 🔹 GET SALE BY ID
-// ==============================
-const getSaleById = async (id, userId) => {
-  const sale = await Sale.findOne({
-    _id: id,
-    userId,
-  })
-    .populate("clientId", "name email phone")
-    .lean();
+const getSaleById = async (saleId) => {
+  const sale = await Sale.findById(saleId)
+    .populate("customer", "name email")
+    .populate("owner", "name email")
+    .populate("createdBy", "name email");
 
   if (!sale) {
-    throw new ApiError(404, "Sale not found");
+    const error = new Error("Sale not found");
+    error.statusCode = 404;
+    throw error;
   }
 
-  return sale;
-};
-
-// ==============================
-// 🔹 UPDATE SALE (MANUAL ONLY)
-// ==============================
-const updateSale = async (id, userId, updateData) => {
-  // Prevent updating automated sales from invoices
-  const existingSale = await Sale.findOne({
-    _id: id,
-    userId,
-  });
-
-  if (!existingSale) {
-    throw new ApiError(404, "Sale not found");
-  }
-
-  if (existingSale.source === "invoice") {
-    throw new ApiError(400, "Cannot update sales generated from invoices");
-  }
-
-  const sale = await Sale.findOneAndUpdate(
+  // Amount paid = sum of completed Payments for this sale's customer, scoped
+  // to a window around the sale's creation (see note below on this being an
+  // approximation, same caveat as the Projects budget-vs-spent feature).
+  const paymentAgg = await Payment.aggregate([
     {
-      _id: id,
-      userId,
+      $match: {
+        customer: sale.customer._id,
+        status: "completed",
+        createdAt: { $gte: sale.createdAt },
+      },
     },
-    updateData,
+    { $group: { _id: null, totalPaid: { $sum: "$amount" } } },
+  ]);
+
+  const amountPaid = paymentAgg[0]?.totalPaid || 0;
+
+  return {
+    ...sale.toObject(),
+    amountPaid,
+    amountDue: Math.max(0, sale.total - amountPaid),
+  };
+};
+
+const updateSale = async (saleId, payload) => {
+  const existing = await Sale.findById(saleId);
+  if (!existing) {
+    const error = new Error("Sale not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  if (existing.status === "paid" || existing.status === "refunded") {
+    const error = new Error(
+      `Cannot edit a sale with status "${existing.status}" — its financial record is final`
+    );
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const updatePayload = { ...payload };
+
+  if (payload.lineItems) {
+    const discount = payload.discount ?? existing.discount;
+    const tax = payload.tax ?? existing.tax;
+    const { lineItems: computedItems, subtotal, total } = computeSaleAmounts(
+      payload.lineItems,
+      discount,
+      tax
+    );
+    updatePayload.lineItems = computedItems;
+    updatePayload.subtotal = subtotal;
+    updatePayload.total = total;
+  } else if (payload.discount !== undefined || payload.tax !== undefined) {
+    // Discount/tax changed without line items changing — recompute total
+    // from existing line items rather than requiring the client to resend them.
+    const discount = payload.discount ?? existing.discount;
+    const tax = payload.tax ?? existing.tax;
+    updatePayload.total = Math.max(0, existing.subtotal - discount + tax);
+  }
+
+  const sale = await Sale.findByIdAndUpdate(
+    saleId,
+    { $set: updatePayload },
+    { new: true, runValidators: true }
+  ).populate("customer", "name email");
+
+  return sale;
+};
+
+const updateSaleStatus = async (saleId, status) => {
+  const sale = await Sale.findById(saleId);
+  if (!sale) {
+    const error = new Error("Sale not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  sale.status = status;
+  await sale.save();
+  return sale;
+};
+
+const deleteSale = async (saleId) => {
+  const sale = await Sale.findById(saleId);
+  if (!sale) {
+    const error = new Error("Sale not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  if (sale.status === "paid") {
+    const error = new Error("Cannot delete a paid sale — cancel or refund it instead");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  await Sale.findByIdAndDelete(saleId);
+  return sale;
+};
+
+const getSalesSummary = async (query = {}, user) => {
+  const { dateFrom, dateTo } = query;
+
+  const filter = {};
+  filter.workspaceId = user.workspaceId;
+  if (dateFrom || dateTo) {
+    filter.saleDate = {};
+    if (dateFrom) filter.saleDate.$gte = new Date(dateFrom);
+    if (dateTo) filter.saleDate.$lte = new Date(dateTo);
+  }
+
+  const results = await Sale.aggregate([
+    { $match: filter },
     {
-      new: true,
-      runValidators: true,
-    }
-  );
+      $group: {
+        _id: "$status",
+        count: { $sum: 1 },
+        total: { $sum: "$total" },
+      },
+    },
+  ]);
 
-  return sale;
-};
+  const summary = {
+    totalRevenue: 0, // paid sales only
+    pendingRevenue: 0, // pending sales
+    totalSalesCount: 0,
+    byStatus: {},
+  };
 
-// ==============================
-// 🔹 DELETE SALE (MANUAL ONLY)
-// ==============================
-const deleteSale = async (id, userId) => {
-  const sale = await Sale.findOne({
-    _id: id,
-    userId,
+  results.forEach((r) => {
+    summary.byStatus[r._id] = { count: r.count, total: r.total };
+    summary.totalSalesCount += r.count;
+    if (r._id === "paid") summary.totalRevenue += r.total;
+    if (r._id === "pending") summary.pendingRevenue += r.total;
   });
 
-  if (!sale) {
-    throw new ApiError(404, "Sale not found");
-  }
-
-  if (sale.source === "invoice") {
-    throw new ApiError(400, "Cannot delete sales generated from invoices");
-  }
-
-  // Soft delete by setting isDeleted flag
-  sale.isDeleted = true;
-  await sale.save();
-  return { message: "Sale deleted successfully" };
-};
-
-const deleteSalePermanently = async (id, userId) => {
-  const sale = await Sale.findOne({
-    _id: id,
-    userId,
-  });
-
-  if (!sale) {
-    throw new ApiError(404, "Sale not found");
-  }
-
-  if (sale.source === "invoice") {
-    throw new ApiError(400, "Cannot delete sales generated from invoices");
-  }
-
-  await Sale.deleteOne({ _id: id, userId });
-  return { message: "Sale permanently deleted" };
-};
-
-const restoreSale = async (id, userId) => {
-  const sale = await Sale.findOne({
-    _id: id,
-    userId,
-    isDeleted: true,
-  });
-
-  if (!sale) {
-    throw new ApiError(404, "Sale not found or not deleted");
-  }
-
-  sale.isDeleted = false;
-  await sale.save();
-  return sale;
+  return summary;
 };
 
 module.exports = {
   createSale,
-  createSaleFromInvoice,
   getSales,
   getSaleById,
   updateSale,
+  updateSaleStatus,
   deleteSale,
-  deleteSalePermanently,
-  restoreSale
+  getSalesSummary,
 };

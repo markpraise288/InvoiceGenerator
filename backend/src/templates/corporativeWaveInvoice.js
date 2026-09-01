@@ -95,8 +95,8 @@ doc
 
 y = 140;
 
-  // ===== CLIENT + META =====
-  // LEFT (CLIENT)
+  // ===== CUSTOMER + META =====
+  // LEFT (CUSTOMER)
   doc
     .fillColor("#333")
     .font("Helvetica-Bold")
@@ -106,10 +106,10 @@ y = 140;
   doc
     .font("Helvetica")
     .fontSize(10)
-    .text(invoice.clientSnapshot.name, margin, y + 15)
-    .text(invoice.clientSnapshot.email, margin, y + 30)
-    .text(invoice.clientSnapshot.phone, margin, y + 45)
-    .text(invoice.clientSnapshot.address, margin, y + 60, {
+    .text(invoice.customerSnapshot.name, margin, y + 15)
+    .text(invoice.customerSnapshot.email, margin, y + 30)
+    .text(invoice.customerSnapshot.phone, margin, y + 45)
+    .text(invoice.customerSnapshot.address, margin, y + 60, {
       width: 220,
     });
 

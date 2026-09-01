@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const generateAccessToken = async (user) => {
     return jwt.sign(
-        { id: user._id},
+        { id: user._id, workspaceId: user.workspaceId},
         JWT_SECRET,
         { expiresIn: JWT_ACCESS_TOKEN_EXPIRES_IN }
     );
@@ -12,7 +12,7 @@ const generateAccessToken = async (user) => {
 
 const generateRefreshToken = async (user) => {
     return jwt.sign(
-        { id: user._id, email: user.email },
+        { id: user._id, email: user.email, workspaceId: user.workspaceId },
         JWT_SECRET,
         { expiresIn: JWT_REFRESH_TOKEN_EXPIRES_IN}
     );

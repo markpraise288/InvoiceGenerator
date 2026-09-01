@@ -70,8 +70,6 @@ const refreshAccessTokenHandler = asyncHandler(async (req, res) => {
 
   const response = await refreshAccessToken({ refreshToken: refreshToken });
 
-  console.log(response.accessToken);
-
   res.cookie("accessToken", response.accessToken, {
     httpOnly: true,
     secure: true, // true in production (HTTPS)

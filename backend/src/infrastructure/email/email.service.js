@@ -1,23 +1,36 @@
-const { EMAIL_FROM } = require('../../config/env');
-const sgMail = require("@sendgrid/mail");
+const { Resend } = require("resend");
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async ({ to, subject, html, attachments }) => {
   try {
-    const msg = {
+    const emailData = {
+      from: process.env.EMAIL_FROM,
       to,
-      from: process.env.EMAIL_FROM, // must be verified in SendGrid
       subject,
       html,
-      attachments,
     };
 
-    await sgMail.send(msg);
+    // Resend expects attachments in a different format than SendGrid.
+    if (attachments?.length) {
+      emailData.attachments = attachments.map((attachment) => ({
+        filename: attachment.filename,
+        content: attachment.content,
+      }));
+    }
 
-    console.log("✅ Email sent");
+    const { data, error } = await resend.emails.send(emailData);
+
+    if (error) {
+      console.error("❌ Resend error:", error);
+      throw error;
+    }
+
+    console.log("✅ Email sent:", data?.id);
+
+    return data;
   } catch (error) {
-    console.error("❌ SendGrid error:", error.response?.body || error.message);
+    console.error("❌ Resend error:", error.message);
     throw error;
   }
 };

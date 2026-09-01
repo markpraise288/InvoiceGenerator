@@ -1,56 +1,78 @@
 const Joi = require("joi");
 
-// ==============================
-// 🔹 COMMON DATE FILTER SCHEMA
-// ==============================
-const dateFilterSchema = Joi.object({
-  startDate: Joi.date().iso().optional(),
-  endDate: Joi.date().iso().optional(),
-}).custom((value, helpers) => {
-  if (value.startDate && value.endDate) {
-    if (new Date(value.startDate) > new Date(value.endDate)) {
-      return helpers.message("startDate cannot be greater than endDate");
+const objectId = Joi.string().regex(/^[0-9a-fA-F]{24}$/).message("Invalid ID format");
+
+const categoryEnum = [
+  "office_supplies",
+  "software",
+  "travel",
+  "meals",
+  "marketing",
+  "payroll",
+  "rent",
+  "utilities",
+  "professional_services",
+  "equipment",
+  "other",
+];
+
+const periodEnum = ["monthly", "quarterly", "yearly"];
+
+const createBudgetSchema = Joi.object({
+  category: Joi.string().valid(...categoryEnum).required(),
+  limit: Joi.number().integer().min(1).required(), // cents
+  period: Joi.string().valid(...periodEnum).optional(),
+  periodStart: Joi.date().required(),
+  periodEnd: Joi.date().greater(Joi.ref("periodStart")).required(),
+  notes: Joi.string().trim().allow("").optional(),
+});
+
+const updateBudgetSchema = Joi.object({
+  limit: Joi.number().integer().min(1).optional(),
+  periodStart: Joi.date().optional(),
+  periodEnd: Joi.date().optional(),
+  notes: Joi.string().trim().allow("").optional(),
+  // category intentionally excluded — changing category on an existing budget
+  // is conceptually a new budget, not an edit; delete and recreate instead
+})
+  .min(1)
+  .custom((value, helpers) => {
+    if (value.periodStart && value.periodEnd && value.periodEnd <= value.periodStart) {
+      return helpers.error("any.invalid", { message: "periodEnd must be after periodStart" });
     }
-  }
-  return value;
-});
-
-// ==============================
-// 🔹 FINANCE SUMMARY QUERY SCHEMA
-// ==============================
-const summaryQuerySchema = dateFilterSchema.keys({
-  includeTrends: Joi.boolean().optional(),
-});
-
-// ==============================
-// 🔹 EXPENSE BREAKDOWN QUERY SCHEMA
-// ==============================
-const breakdownQuerySchema = dateFilterSchema.keys({
-  category: Joi.string()
-    .valid("rent", "utilities", "marketing", "salary", "other")
-    .optional(),
-});
-
-// ==============================
-// 🔹 CASH FLOW QUERY SCHEMA
-// ==============================
-const cashFlowQuerySchema = Joi.object({
-  limit: Joi.number().integer().min(1).max(100).default(20),
-  type: Joi.string().valid("income", "expense").optional(),
-});
-
-// ==============================
-// 🔹 GLOBAL QUERY CLEANER (IMPORTANT)
-// ==============================
-const sanitizeQuery = (schema) => {
-  return schema.options({
-    stripUnknown: true, // 🔥 removes unwanted query params
-    abortEarly: false,
+    return value;
   });
-};
+
+const listBudgetsQuerySchema = Joi.object({
+  category: Joi.string().valid(...categoryEnum).optional(),
+  period: Joi.string().valid(...periodEnum).optional(),
+  activeOnly: Joi.boolean().optional(), // only budgets whose period covers today
+  page: Joi.number().integer().min(1).optional(),
+  limit: Joi.number().integer().min(1).max(100).optional(),
+});
+
+const profitLossQuerySchema = Joi.object({
+  dateFrom: Joi.date().required(),
+  dateTo: Joi.date().greater(Joi.ref("dateFrom")).required(),
+  groupBy: Joi.string().valid("day", "week", "month").optional(),
+});
+
+const cashFlowQuerySchema = Joi.object({
+  dateFrom: Joi.date().required(),
+  dateTo: Joi.date().greater(Joi.ref("dateFrom")).required(),
+  groupBy: Joi.string().valid("day", "week", "month").optional(),
+});
+
+const budgetVsActualQuerySchema = Joi.object({
+  periodStart: Joi.date().optional(),
+  periodEnd: Joi.date().optional(),
+});
 
 module.exports = {
-  summaryQuerySchema: sanitizeQuery(summaryQuerySchema),
-  breakdownQuerySchema: sanitizeQuery(breakdownQuerySchema),
-  cashFlowQuerySchema: sanitizeQuery(cashFlowQuerySchema),
+  createBudgetSchema,
+  updateBudgetSchema,
+  listBudgetsQuerySchema,
+  profitLossQuerySchema,
+  cashFlowQuerySchema,
+  budgetVsActualQuerySchema,
 };

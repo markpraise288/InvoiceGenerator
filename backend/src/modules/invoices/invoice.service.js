@@ -9,8 +9,9 @@ const invoiceTemplate = require("../../infrastructure/templates/invoice.template
 const { sendEmail } = require("../../infrastructure/email/email.service");
 const formatDate = require("../../utils/formatDate");
 const formatCurrency = require("../../utils/formatCurrency");
+const { logActivity } = require("../activities/activity.service");
 
-const createInvoice = async (userId, invoiceData, send) => {
+const createInvoice = async (user, invoiceData, send) => {
   // 🔹 Calculate subtotal
   invoiceData.subtotal = invoiceData.items.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -24,23 +25,39 @@ const createInvoice = async (userId, invoiceData, send) => {
     ((invoiceData.discount?.value || 0) / 100) * invoiceData.subtotal;
 
   // 🔹 Generate invoice number
-  invoiceData.invoiceNumber = await generateInvoiceNumber(userId);
+  invoiceData.invoiceNumber = await generateInvoiceNumber(user.id);
 
   // 🔹 Save invoice
-  const invoice = await Invoice.create({ ...invoiceData, userId });
+  const invoice = await Invoice.create({
+    ...invoiceData,
+    userId: user.id,
+    createdBy: user.id,
+    workspaceId: user.workspaceId,
+  });
 
   // 🔹 Notification
   await notificationService.createNotification({
-    userId: userId,
+    userId: user.id,
     title: "New Invoice Created",
-    description: `Invoice #${invoice.invoiceNumber} has been created for ${invoice.clientSnapshot.name}.`,
+    description: `Invoice #${invoice.invoiceNumber} has been created for ${invoice.customerSnapshot.name}.`,
     type: "invoice",
   });
 
-  // 🔥 Generate PDF (now returns buffer)
   const pdfBuffer = await createInvoicePDF(invoice, send);
 
-  // 🔥 RETURN BOTH
+  await logActivity({
+    relatedId: invoice._id,
+    relatedTo: "Invoice",
+    body: `An Invoice ${invoice.invoiceNumber} was created`,
+    userId: user.id,
+    type: "created",
+    title: `Invoice created: #${invoice.invoiceNumber}`,
+    workspaceId: invoice.workspaceId,
+    meta: {
+      invoiceId: invoice._id,
+    },
+  });
+
   return {
     invoice,
     pdfBuffer,
@@ -50,18 +67,44 @@ const createInvoice = async (userId, invoiceData, send) => {
 const downloadInvoicePDF = async (invoiceId) => {
   const invoice = await Invoice.findById(invoiceId);
   if (!invoice) {
-    throw new Error("Invoice not found");
+    const err = new Error("INVOICE_NOT_FOUND");
+    err.status = 404;
+    throw err;
   }
+
   const user = await User.findById(invoice.userId);
   if (!user) {
-    throw new Error("User not found");
+    const err = new Error("USER_NOT_FOUND");
+    err.status = 404;
+    throw err;
   }
-  const filePath = await generateInvoicePDF(invoice, user, invoice.template);
-  return filePath;
+
+  let pdfBuffer;
+  try {
+    // generateInvoicePDF returns a Buffer, not a file path — same util
+    // used by createInvoicePDF above
+    pdfBuffer = await generateInvoicePDF(invoice, user, invoice.template);
+  } catch (err) {
+    const wrapped = new Error("PDF_GENERATION_FAILED");
+    wrapped.status = 500;
+    wrapped.cause = err;
+    throw wrapped;
+  }
+
+  if (!pdfBuffer || !Buffer.isBuffer(pdfBuffer)) {
+    const err = new Error("PDF_BUFFER_INVALID");
+    err.status = 500;
+    throw err;
+  }
+
+  return {
+    pdfBuffer,
+    fileName: `invoice-${invoice.invoiceNumber ?? invoice._id}.pdf`,
+  };
 };
 
-const getInvoices = async (userId) => {
-  const invoices = await Invoice.find({ userId: userId });
+const getInvoices = async (user) => {
+  const invoices = await Invoice.find({ workspaceId: user.workspaceId });
   return invoices;
 };
 
@@ -72,11 +115,10 @@ const getInvoiceById = async (id) => {
 
 const { createSaleFromInvoice } = require("../sales/sales.service");
 
-const updateInvoice = async (id, updateData) => {
+const updateInvoice = async (id, updateData, user) => {
   const invoice = await Invoice.findOne({ _id: id });
 
   const previousStatus = invoice.status;
-
   const totalPaid = updateData.payments
     ? updateData.payments.reduce((acc, payment) => acc + payment.amount, 0)
     : invoice.payments.reduce((acc, payment) => acc + payment.amount, 0);
@@ -107,17 +149,57 @@ const updateInvoice = async (id, updateData) => {
       description: `Invoice #${invoice.invoiceNumber} has been marked as paid.`,
       type: "invoice",
     });
+
+    await logActivity({
+    relatedId: invoice._id,
+    relatedTo: "Invoice",
+    body: `An Invoice ${invoice.invoiceNumber} was created`,
+    userId: user.id,
+    type: "invoice_paid",
+    title: `Invoice paid: #${invoice.invoiceNumber}`,
+    workspaceId: invoice.workspaceId,
+    meta: {
+      invoiceId: invoice._id,
+    },
+  });
   }
+
+  await logActivity({
+    relatedId: invoice._id,
+    relatedTo: "Invoice",
+    body: `An Invoice ${invoice.invoiceNumber} was updated`,
+    userId: user.id,
+    type: "updated",
+    title: `Invoice updated: #${invoice.invoiceNumber}`,
+    workspaceId: invoice.workspaceId,
+    meta: {
+      invoiceId: invoice._id,
+    },
+  });
 
   return invoice;
 };
 
-const deleteInvoice = async (id) => {
+const deleteInvoice = async (id, user) => {
   const invoice = await Invoice.findOneAndUpdate(
     { _id: id },
     { isDeleted: true },
     { returnDocument: "after" },
   );
+
+  await logActivity({
+    relatedId: invoice._id,
+    relatedTo: "Invoice",
+    body: `An Invoice ${invoice.invoiceNumber} was deleted`,
+    userId: user.id,
+    type: "deleted",
+    title: `Invoice deleted: #${invoice.invoiceNumber}`,
+    workspaceId: invoice.workspaceId,
+    meta: {
+      invoiceId: invoice._id,
+    },
+  });
+
   return invoice;
 };
 
@@ -140,7 +222,7 @@ const createInvoicePDF = async (invoice, send) => {
     throw new Error("User not found");
   }
 
-  // 🔥 Generate PDF as BUFFER (not file path)
+  // Generate PDF as BUFFER (not file path)
   const pdfBuffer = await generateInvoicePDF(invoice, user, invoice.template);
 
   const dueDate = invoice.dueDate;
@@ -152,11 +234,11 @@ const createInvoicePDF = async (invoice, send) => {
   // ✅ Send email with BUFFER attachment
   if (send === "true") {
     await sendEmail({
-      to: invoice.clientSnapshot.email,
+      to: invoice.customerSnapshot.email,
       subject: "Your Invoice",
       html: invoiceTemplate({
-        email: invoice.clientSnapshot.email,
-        clientName: invoice.clientSnapshot.name,
+        email: invoice.customerSnapshot.email,
+        customerName: invoice.customerSnapshot.name,
         invoiceNumber: invoice.invoiceNumber,
         amount: formatMoney(invoice.total),
         dueDate: formatDate(dueDate),
