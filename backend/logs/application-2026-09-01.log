@@ -261,3 +261,8 @@
 {"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-01 20:33:54"}
 {"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-01T18%3A20%3A43.677Z","service":"invoice-service","timestamp":"2026-09-01 20:33:54"}
 {"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-09-01 20:50:59"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-01 21:00:57"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-01 21:00:57"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-01 21:04:35"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-01 21:04:35"}
+{"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-09-01 21:04:42"}
