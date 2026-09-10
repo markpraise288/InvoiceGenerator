@@ -267,7 +267,7 @@ const convertLeadToCustomer = async (leadId, payload, user) => {
   console.log("Converting lead to customer:", { leadId, user, payload });
   const customer = await customerService.createCustomer(
     {
-      name: lead.company || lead.name,
+      name: lead.name,
       email: lead.email,
       phone: lead.phone,
       billingAddress: payload.billingAddress,

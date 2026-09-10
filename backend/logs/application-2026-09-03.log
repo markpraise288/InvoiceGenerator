@@ -1,0 +1,265 @@
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-03 21:35:54"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-03 21:35:54"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:40"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:41"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:43"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:47"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/search/history - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/search/history - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/search/history - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/search/history - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:52"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:53"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:55"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A36%3A52.338Z - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/auth/accessToken - Missing credentials","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-03 21:36:59"}
+{"level":"info","message":"POST /api/auth/logout","service":"invoice-service","timestamp":"2026-09-03 21:37:17"}
+{"level":"info","message":"POST /api/auth/login","service":"invoice-service","timestamp":"2026-09-03 21:37:57"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A37%3A58.167Z","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T19%3A37%3A58.167Z","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 21:37:58"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 21:38:03"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 21:38:03"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 21:41:35"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 21:42:20"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"error","message":"[GET] /api/search/history - Invalid token","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"error","message":"[GET] /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc - Invalid token","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:11:25"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:21:04"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T20%3A21%3A06.511Z","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-03T20%3A21%3A06.511Z","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-03 22:21:06"}
+{"level":"info","message":"GET /api/notifications","service":"invoice-service","timestamp":"2026-09-03 22:21:11"}
+{"level":"info","message":"GET /api/reports/overview","service":"invoice-service","timestamp":"2026-09-03 22:21:15"}
+{"level":"info","message":"GET /api/leads/kanban","service":"invoice-service","timestamp":"2026-09-03 22:21:18"}
+{"level":"info","message":"GET /api/leads?page=1&limit=50","service":"invoice-service","timestamp":"2026-09-03 22:21:18"}
+{"level":"info","message":"GET /api/leads/summary","service":"invoice-service","timestamp":"2026-09-03 22:21:18"}
+{"level":"info","message":"GET /api/contacts?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:21:19"}
+{"level":"info","message":"GET /api/deals/pipeline-summary","service":"invoice-service","timestamp":"2026-09-03 22:21:21"}
+{"level":"info","message":"GET /api/deals","service":"invoice-service","timestamp":"2026-09-03 22:21:21"}
+{"level":"info","message":"GET /api/companies?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:21:22"}
+{"level":"info","message":"GET /api/tasks/upcoming?daysAhead=7","service":"invoice-service","timestamp":"2026-09-03 22:21:31"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=200&daysAhead=365","service":"invoice-service","timestamp":"2026-09-03 22:21:31"}
+{"level":"info","message":"GET /api/calendar/stats","service":"invoice-service","timestamp":"2026-09-03 22:21:33"}
+{"level":"info","message":"GET /api/calendar/upcoming?limit=5&daysAhead=14","service":"invoice-service","timestamp":"2026-09-03 22:21:33"}
+{"level":"info","message":"GET /api/calendar?from=2026-08-24T22%3A00%3A00.000Z&to=2026-10-07T21%3A59%3A59.999Z&limit=200","service":"invoice-service","timestamp":"2026-09-03 22:21:33"}
+{"level":"info","message":"GET /api/leads/kanban","service":"invoice-service","timestamp":"2026-09-03 22:21:37"}
+{"level":"info","message":"GET /api/leads/summary","service":"invoice-service","timestamp":"2026-09-03 22:21:37"}
+{"level":"info","message":"GET /api/leads?page=1&limit=50","service":"invoice-service","timestamp":"2026-09-03 22:21:37"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"info","message":"GET /api/companies?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"error","message":"[GET] /api/companies?page=1&limit=20&sortBy=createdAt&sortDir=desc - Invalid token","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"info","message":"GET /api/companies?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-03 22:35:28"}
+{"level":"info","message":"GET /api/deals/pipeline-summary","service":"invoice-service","timestamp":"2026-09-03 22:35:32"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-03 22:35:32"}
+{"level":"info","message":"GET /api/deals","service":"invoice-service","timestamp":"2026-09-03 22:35:32"}
+{"level":"info","message":"GET /api/leads/kanban","service":"invoice-service","timestamp":"2026-09-03 22:35:34"}
+{"level":"info","message":"GET /api/leads/summary","service":"invoice-service","timestamp":"2026-09-03 22:35:34"}
+{"level":"info","message":"GET /api/leads?page=1&limit=50","service":"invoice-service","timestamp":"2026-09-03 22:35:34"}
+{"level":"info","message":"GET /api/sales/summary","service":"invoice-service","timestamp":"2026-09-03 22:35:40"}
+{"level":"info","message":"GET /api/sales?page=1&limit=20","service":"invoice-service","timestamp":"2026-09-03 22:35:40"}
+{"level":"info","message":"GET /api/expenses/summary","service":"invoice-service","timestamp":"2026-09-03 22:35:45"}
+{"level":"info","message":"GET /api/expenses?page=1&limit=20","service":"invoice-service","timestamp":"2026-09-03 22:35:45"}
+{"level":"info","message":"GET /api/invoices","service":"invoice-service","timestamp":"2026-09-03 22:35:46"}
+{"level":"info","message":"GET /api/payments/summary","service":"invoice-service","timestamp":"2026-09-03 22:35:48"}
+{"level":"info","message":"GET /api/payments?page=1&limit=20","service":"invoice-service","timestamp":"2026-09-03 22:35:48"}
+{"level":"info","message":"GET /api/invoices/6a77913280af2ca72ec5f7f8","service":"invoice-service","timestamp":"2026-09-03 22:35:56"}
+{"level":"info","message":"GET /api/invoices/6a77913280af2ca72ec5f7f8","service":"invoice-service","timestamp":"2026-09-03 22:35:56"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-09-03 22:35:56"}
+{"level":"info","message":"GET /api/users","service":"invoice-service","timestamp":"2026-09-03 22:35:56"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-09-03 22:36:18"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-09-03 22:36:18"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-09-03 22:36:18"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-09-03 22:36:18"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-09-03 22:36:18"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=conversionRate","service":"invoice-service","timestamp":"2026-09-03 22:36:21"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=totalActivities","service":"invoice-service","timestamp":"2026-09-03 22:36:30"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonDeals","service":"invoice-service","timestamp":"2026-09-03 22:36:32"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=totalLeads","service":"invoice-service","timestamp":"2026-09-03 22:36:34"}
+{"level":"info","message":"GET /api/team/leaderboard?metric=wonValue","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"GET /api/settings/team","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"GET /api/team/overview","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"GET /api/team/6a75a8883d6e50437c75f71b/stats","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"GET /api/team/6a7073073ff34a1cbbb222f9/stats","service":"invoice-service","timestamp":"2026-09-03 22:49:31"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-03 22:49:48"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-03 22:49:48"}

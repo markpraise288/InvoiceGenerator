@@ -22,7 +22,7 @@ const signup = async ({ email, password, phone, name, companyName, address }) =>
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const workspace = await Workspace.create({
-    name: companyName
+    name: companyName,
   });
 
   const user = await User.create({

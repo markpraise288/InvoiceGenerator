@@ -41,3 +41,62 @@
 {"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-02 10:17:57"}
 {"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-02 10:17:57"}
 {"level":"info","message":"SIGINT received. Shutting down gracefully...","service":"invoice-service","timestamp":"2026-09-02 10:18:12"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-02 10:20:51"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-02 10:20:51"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-02 10:28:02"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-02 10:28:02"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-02 17:00:30"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-02 17:00:30"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-02 17:01:21"}
+{"level":"error","message":"[GET] /api/settings/profile - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:01:21"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-02 17:01:21"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-02 17:01:21"}
+{"level":"info","message":"GET /api/billing/data","service":"invoice-service","timestamp":"2026-09-02 17:01:26"}
+{"level":"info","message":"GET /api/billing/data","service":"invoice-service","timestamp":"2026-09-02 17:01:26"}
+{"level":"info","message":"POST /api/billing/upgrade","service":"invoice-service","timestamp":"2026-09-02 17:02:00"}
+{"level":"error","message":"[POST] /api/billing/upgrade - fetch failed","service":"invoice-service","timestamp":"2026-09-02 17:02:10"}
+{"level":"info","message":"POST /api/billing/upgrade","service":"invoice-service","timestamp":"2026-09-02 17:03:02"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-02 17:05:12"}
+{"level":"info","message":"GET /api/billing/data","service":"invoice-service","timestamp":"2026-09-02 17:05:12"}
+{"level":"info","message":"POST /api/billing/upgrade/confirm","service":"invoice-service","timestamp":"2026-09-02 17:05:12"}
+{"level":"info","message":"GET /api/billing/data","service":"invoice-service","timestamp":"2026-09-02 17:05:14"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A09%3A52.798Z","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A09%3A52.798Z","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/search/history","service":"invoice-service","timestamp":"2026-09-02 17:09:52"}
+{"level":"info","message":"GET /api/settings/profile","service":"invoice-service","timestamp":"2026-09-02 17:10:46"}
+{"level":"info","message":"GET /api/companies?page=1&limit=20&sortBy=createdAt&sortDir=desc","service":"invoice-service","timestamp":"2026-09-02 17:10:46"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-02 17:10:48"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-02 17:10:48"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-02 17:10:48"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:10:48"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:10:48"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=50&daysAhead=1 - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/deals/kanban - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/tasks/overdue - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/tasks/upcoming?limit=10&daysAhead=7 - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/activities/recent?limit=5 - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/auth/accessToken","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"error","message":"[GET] /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z - Invalid token","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=50&daysAhead=1","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/deals/kanban","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/tasks/overdue","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/tasks/upcoming?limit=10&daysAhead=7","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/activities/recent?limit=5","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/reports/overview?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"GET /api/reports/leads?from=2026-08-31T22%3A00%3A00.000Z&to=2026-09-02T15%3A10%3A48.408Z","service":"invoice-service","timestamp":"2026-09-02 17:22:51"}
+{"level":"info","message":"MongoDB connected successfully","service":"invoice-service","timestamp":"2026-09-02 17:23:04"}
+{"level":"info","message":"🚀 Server running on port 5000","service":"invoice-service","timestamp":"2026-09-02 17:23:04"}
